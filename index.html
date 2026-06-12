@@ -262,6 +262,123 @@
                 </div>
             </section>
 
+            <!-- Météo du mariage -->
+            <section class="section" id="meteo-section" style="background:#f0f8ff;padding:60px 0;">
+                <div class="container">
+                    <div class="section-header">
+                        <h3>Météo du grand jour</h3>
+                        <p>Ollioules, 19 juin 2027</p>
+                    </div>
+                    <div id="meteo-widget" style="max-width:700px;margin:0 auto;">
+                        <div id="meteo-countdown-msg" style="text-align:center;padding:30px;color:#888;font-style:italic;display:none;">
+                            <div style="font-size:48px;margin-bottom:12px;">🗓</div>
+                            <p style="font-size:16px;">La météo du mariage sera disponible le <strong>16 juin 2027</strong>.<br>Revenez 3 jours avant pour découvrir les prévisions !</p>
+                        </div>
+                        <div id="meteo-cards" style="display:none;">
+                            <p style="text-align:center;font-size:13px;color:#aaa;margin-bottom:20px;font-style:italic;">⚡ Simulation — météo en temps réel pour Ollioules</p>
+                            <div id="meteo-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;"></div>
+                        </div>
+                        <div id="meteo-loading" style="text-align:center;padding:40px;color:#ccc;">
+                            <div style="font-size:32px;margin-bottom:8px;">🌤</div>
+                            <p>Chargement de la météo...</p>
+                        </div>
+                        <div id="meteo-error" style="display:none;text-align:center;padding:30px;color:#aaa;">
+                            <p>Météo temporairement indisponible.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <style>
+                .meteo-card {
+                    background:#fff;
+                    border-radius:16px;
+                    padding:24px 16px;
+                    text-align:center;
+                    box-shadow:0 4px 20px rgba(0,0,0,0.08);
+                    border:1px solid rgba(255,105,180,0.1);
+                    transition:transform 0.2s;
+                }
+                .meteo-card:hover { transform:translateY(-4px); }
+                .meteo-card .meteo-day { font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#FF69B4;font-weight:700;margin-bottom:8px; }
+                .meteo-card .meteo-icon { font-size:52px;margin:10px 0; }
+                .meteo-card .meteo-desc { font-size:13px;color:#888;margin-bottom:12px; }
+                .meteo-card .meteo-temps { display:flex;justify-content:center;gap:16px; }
+                .meteo-card .meteo-max { font-size:22px;font-weight:700;color:#333; }
+                .meteo-card .meteo-min { font-size:22px;color:#bbb; }
+                .meteo-card .meteo-rain { font-size:12px;color:#6ab;margin-top:8px; }
+                @media(max-width:576px) { #meteo-grid { grid-template-columns:1fr; } }
+            </style>
+            <script>
+            (function() {
+                var weddingDate = new Date(2027, 5, 19);
+                var now = new Date();
+                var daysUntil = Math.ceil((weddingDate - now) / 86400000);
+                var SIMULATE = true; // mettre false en production
+
+                function weatherIcon(code) {
+                    if (code === 113) return '☀️';
+                    if (code === 116) return '⛅';
+                    if ([119,122].includes(code)) return '☁️';
+                    if ([248,260].includes(code)) return '🌫️';
+                    if (code >= 176 && code <= 185) return '🌦️';
+                    if (code >= 200 && code <= 201) return '⛈️';
+                    if (code >= 227 && code <= 230) return '🌨️';
+                    if (code >= 263 && code <= 284) return '🌧️';
+                    if (code >= 293 && code <= 309) return '🌧️';
+                    if (code >= 311 && code <= 338) return '🌨️';
+                    if (code >= 386 && code <= 395) return '⛈️';
+                    return '🌤️';
+                }
+
+                function dayLabel(offset) {
+                    if (!SIMULATE) {
+                        var d = new Date(weddingDate);
+                        d.setDate(d.getDate() - (2 - offset));
+                        return ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'][d.getDay()] + ' ' + d.getDate() + ' juin';
+                    }
+                    var d = new Date();
+                    d.setDate(d.getDate() + offset);
+                    var jours = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+                    var mois = ['jan','fév','mar','avr','mai','juin','juil','aoû','sep','oct','nov','déc'];
+                    return jours[d.getDay()] + ' ' + d.getDate() + ' ' + mois[d.getMonth()];
+                }
+
+                if (!SIMULATE && daysUntil > 3) {
+                    document.getElementById('meteo-loading').style.display = 'none';
+                    document.getElementById('meteo-countdown-msg').style.display = 'block';
+                    return;
+                }
+
+                fetch('https://wttr.in/Ollioules?format=j1')
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        document.getElementById('meteo-loading').style.display = 'none';
+                        var grid = document.getElementById('meteo-grid');
+                        data.weather.slice(0,3).forEach(function(day, i) {
+                            var code = parseInt(day.hourly[4].weatherCode);
+                            var desc = day.hourly[4].lang_fr ? day.hourly[4].lang_fr[0].value : day.hourly[4].weatherDesc[0].value;
+                            var card = document.createElement('div');
+                            card.className = 'meteo-card';
+                            card.innerHTML =
+                                '<div class="meteo-day">' + dayLabel(i) + '</div>' +
+                                '<div class="meteo-icon">' + weatherIcon(code) + '</div>' +
+                                '<div class="meteo-desc">' + desc + '</div>' +
+                                '<div class="meteo-temps">' +
+                                    '<span class="meteo-max">' + day.maxtempC + '°</span>' +
+                                    '<span class="meteo-min">' + day.mintempC + '°</span>' +
+                                '</div>' +
+                                '<div class="meteo-rain">💧 ' + day.hourly[4].chanceofrain + '% de pluie</div>';
+                            grid.appendChild(card);
+                        });
+                        document.getElementById('meteo-cards').style.display = 'block';
+                    })
+                    .catch(function() {
+                        document.getElementById('meteo-loading').style.display = 'none';
+                        document.getElementById('meteo-error').style.display = 'block';
+                    });
+            })();
+            </script>
+
             <!-- Planning Section -->
             <section class="section section-4">
                 <div id="party">
