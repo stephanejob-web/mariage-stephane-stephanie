@@ -8,8 +8,8 @@
         <meta content="" name="description">
 
         <!-- Favicons -->
-        <link href="img/favicon.ico" rel="icon">
-        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="img/favicon.svg" rel="icon" type="image/svg+xml">
+        <link href="img/favicon.svg" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:500i,700i,900i|Nunito:700,900|Raleway:300,400,500" rel="stylesheet"> 
@@ -529,6 +529,16 @@
             </section>
 
             <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+            <!-- Footer -->
+            <footer style="background:#1a1a1a;padding:50px 20px 30px;text-align:center;">
+                <p style="font-family:'Playfair Display',serif;color:#fff;font-size:clamp(22px,5vw,36px);font-weight:900;letter-spacing:6px;margin-bottom:6px;">Stéphane <span style="color:#FF69B4;">&</span> Stéphanie</p>
+                <p style="color:#FF69B4;font-size:clamp(12px,3vw,15px);letter-spacing:4px;text-transform:uppercase;margin-bottom:24px;">19 Juin 2027 — Ollioules</p>
+                <div style="width:40px;height:1px;background:#FF69B4;margin:0 auto 24px;"></div>
+                <p style="color:rgba(255,255,255,0.35);font-size:12px;letter-spacing:1px;">« L'homme quittera son père et sa mère… et les deux ne feront qu'une seule chair. » — Genèse 2:24</p>
+                <p style="color:rgba(255,255,255,0.2);font-size:11px;margin-top:20px;">© 2027 Stéphane &amp; Stéphanie — Tous droits réservés</p>
+            </footer>
+
         </div>
 
         <script src="vendor/jquery/jquery.min.js"></script>
@@ -615,6 +625,28 @@
                     list.style.display = 'none';
                 }
             });
+        })();
+        </script>
+
+        <!-- Fade-in au scroll -->
+        <script>
+        (function() {
+            var els = document.querySelectorAll('.section-header, .tl-item, .gal-item, .menu-card, .resto-photos, #registry .container > *, .form-group, footer > *');
+            els.forEach(function(el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(28px)';
+                el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+            });
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(function(el) { observer.observe(el); });
         })();
         </script>
 
