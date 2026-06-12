@@ -1443,3 +1443,24 @@ h6 {
         bottom: 20px;
     }
 }
+
+/* ===== SCROLL FLUIDE NATIF ===== */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Libère les sections de la contrainte 100vh fullpage */
+.fp-section {
+    height: auto !important;
+    min-height: 100vh;
+}
+
+.section-3 {
+    height: auto !important;
+    min-height: auto !important;
+}
+
+#full-page {
+    overflow: visible !important;
+}

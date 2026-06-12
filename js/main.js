@@ -10,23 +10,13 @@
         }
     });
     
-    // Full page
-    var isMobile = window.innerWidth <= 768;
-    var myFullpage = new fullpage('#full-page', {
+    // Scroll natif fluide — fullpage désactivé
+    new fullpage('#full-page', {
+        autoScrolling: false,
+        fitToSection: false,
         scrollBar: true,
-        scrollingSpeed: 600,
-        autoScrolling: !isMobile,
-        fitToSection: !isMobile,
-        navigation: !isMobile,
-        navigationPosition: 'left',
-        paddingTop: '0',
-        paddingBottom: '0',
-        verticalCentered: true,
-        showActiveTooltip: true,
-        touchSensitivity: 15,
-        normalScrollElements: '.gal-grid, #lb-overlay',
-        navigationTooltips: ['Accueil', 'Notre Histoire', 'Galerie', 'Le Mariage', 'Accès', 'Cagnotte', 'Présence'],
-        sectionsColor: ['#ffffff']
+        navigation: false,
+        scrollingSpeed: 0,
     });
 
     // Back to top button
