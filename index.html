@@ -435,7 +435,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Adresse</label>
-                                        <input type="text" name="adresse" class="form-control" placeholder="Votre adresse complète" />
+                                        <div style="position:relative;">
+                                            <input type="text" id="adresse-input" name="adresse" class="form-control" placeholder="Commencez à taper votre adresse..." autocomplete="off" />
+                                            <ul id="adresse-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px;list-style:none;margin:0;padding:0;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-height:220px;overflow-y:auto;"></ul>
+                                        </div>
                                     </div>
 
                                     <div class="form-group rsvp-couple-check">
@@ -523,6 +526,77 @@
 
         <!-- Main Javascript File -->
         <script src="js/main.js"></script>
+
+        <!-- Autocomplete adresse -->
+        <script>
+        (function() {
+            var input = document.getElementById('adresse-input');
+            var list = document.getElementById('adresse-suggestions');
+            var debounceTimer;
+
+            if (!input) return;
+
+            input.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                var q = input.value.trim();
+                if (q.length < 3) { list.style.display = 'none'; list.innerHTML = ''; return; }
+                debounceTimer = setTimeout(function() {
+                    fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(q) + '&limit=5')
+                        .then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            list.innerHTML = '';
+                            if (!data.features || data.features.length === 0) { list.style.display = 'none'; return; }
+                            data.features.forEach(function(f) {
+                                var li = document.createElement('li');
+                                li.textContent = f.properties.label;
+                                li.style.cssText = 'padding:10px 14px;cursor:pointer;font-size:14px;border-bottom:1px solid #f0f0f0;color:#333;';
+                                li.addEventListener('mouseenter', function() { li.style.background = '#fff5f9'; });
+                                li.addEventListener('mouseleave', function() { li.style.background = ''; });
+                                li.addEventListener('mousedown', function(e) {
+                                    e.preventDefault();
+                                    input.value = f.properties.label;
+                                    list.style.display = 'none';
+                                    list.innerHTML = '';
+                                });
+                                list.appendChild(li);
+                            });
+                            list.style.display = 'block';
+                        })
+                        .catch(function() { list.style.display = 'none'; });
+                }, 300);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !list.contains(e.target)) {
+                    list.style.display = 'none';
+                }
+            });
+
+            input.addEventListener('keydown', function(e) {
+                var items = list.querySelectorAll('li');
+                var active = list.querySelector('li.active');
+                var idx = -1;
+                items.forEach(function(it, i) { if (it === active) idx = i; });
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (active) active.classList.remove('active');
+                    var next = items[idx + 1] || items[0];
+                    if (next) { next.classList.add('active'); next.style.background = '#fff5f9'; input.value = next.textContent; }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (active) active.classList.remove('active');
+                    var prev = items[idx - 1] || items[items.length - 1];
+                    if (prev) { prev.classList.add('active'); prev.style.background = '#fff5f9'; input.value = prev.textContent; }
+                } else if (e.key === 'Enter' && active) {
+                    e.preventDefault();
+                    input.value = active.textContent;
+                    list.style.display = 'none';
+                } else if (e.key === 'Escape') {
+                    list.style.display = 'none';
+                }
+            });
+        })();
+        </script>
 
     </body>
 </html>
