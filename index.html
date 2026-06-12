@@ -482,9 +482,82 @@
                                         </div>
                                     </div>
 
+                                    <!-- Choix de vin -->
+                                    <div class="form-group" style="background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;">
+                                        <label style="font-weight:600;color:#FF69B4;margin-bottom:12px;display:block;">🍷 Choix de boisson à table</label>
+                                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="vin-rouge" name="boisson[]" value="Vin rouge">
+                                                <label class="custom-control-label" for="vin-rouge">Vin rouge</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="vin-blanc" name="boisson[]" value="Vin blanc">
+                                                <label class="custom-control-label" for="vin-blanc">Vin blanc</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="vin-rose" name="boisson[]" value="Rosé">
+                                                <label class="custom-control-label" for="vin-rose">Rosé</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="sans-alcool" name="boisson[]" value="Sans alcool">
+                                                <label class="custom-control-label" for="sans-alcool">Sans alcool</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Régime alimentaire -->
+                                    <div class="form-group" style="background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;">
+                                        <label style="font-weight:600;color:#FF69B4;margin-bottom:12px;display:block;">🍽 Régime alimentaire</label>
+                                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="regime-std" name="regime[]" value="Standard">
+                                                <label class="custom-control-label" for="regime-std">Standard</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="regime-vege" name="regime[]" value="Végétarien">
+                                                <label class="custom-control-label" for="regime-vege">Végétarien</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="regime-gluten" name="regime[]" value="Sans gluten">
+                                                <label class="custom-control-label" for="regime-gluten">Sans gluten</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="regime-lactose" name="regime[]" value="Sans lactose">
+                                                <label class="custom-control-label" for="regime-lactose">Sans lactose</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Allergies -->
                                     <div class="form-group">
-                                        <label>Demande particulière</label>
-                                        <textarea name="demande" class="form-control" rows="3" placeholder="Allergie, mobilité réduite, autre..."></textarea>
+                                        <label>⚠️ Allergies alimentaires</label>
+                                        <input type="text" name="allergies" class="form-control" placeholder="Ex: arachides, fruits de mer, gluten..." />
+                                    </div>
+
+                                    <!-- Autres infos -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>👶 Enfant(s) à table</label>
+                                            <select name="enfants" class="form-control">
+                                                <option value="0">Aucun</option>
+                                                <option value="1">1 enfant</option>
+                                                <option value="2">2 enfants</option>
+                                                <option value="3">3 enfants ou plus</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>♿ Mobilité réduite</label>
+                                            <select name="mobilite" class="form-control">
+                                                <option value="non">Non</option>
+                                                <option value="oui">Oui</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Remarque libre -->
+                                    <div class="form-group">
+                                        <label>💬 Remarque ou demande particulière</label>
+                                        <textarea name="demande" class="form-control" rows="2" placeholder="Toute autre information utile..."></textarea>
                                     </div>
 
 
