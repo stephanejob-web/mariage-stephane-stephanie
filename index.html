@@ -469,7 +469,7 @@
                                     </div>
 
                                     <div id="couple-fields" style="display:none;background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;margin-bottom:16px;">
-                                        <p style="font-size:13px;color:#FF69B4;font-weight:600;margin-bottom:12px;">Informations de votre accompagnant(e)</p>
+                                        <p style="font-size:13px;color:#FF69B4;font-weight:700;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;">♥ Informations de votre accompagnant(e)</p>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Prénom</label>
@@ -479,6 +479,55 @@
                                                 <label>Nom</label>
                                                 <input type="text" name="conjoint_nom" class="form-control" placeholder="Nom" />
                                             </div>
+                                        </div>
+                                        <!-- Boisson conjoint -->
+                                        <div class="form-group" style="margin-top:8px;">
+                                            <label style="font-weight:600;color:#FF69B4;margin-bottom:10px;display:block;">🍷 Boisson à table</label>
+                                            <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-vin-rouge" name="conjoint_boisson[]" value="Vin rouge">
+                                                    <label class="custom-control-label" for="c-vin-rouge">Vin rouge</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-vin-blanc" name="conjoint_boisson[]" value="Vin blanc">
+                                                    <label class="custom-control-label" for="c-vin-blanc">Vin blanc</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-vin-rose" name="conjoint_boisson[]" value="Rosé">
+                                                    <label class="custom-control-label" for="c-vin-rose">Rosé</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-sans-alcool" name="conjoint_boisson[]" value="Sans alcool">
+                                                    <label class="custom-control-label" for="c-sans-alcool">Sans alcool</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Régime conjoint -->
+                                        <div class="form-group">
+                                            <label style="font-weight:600;color:#FF69B4;margin-bottom:10px;display:block;">🍽 Régime alimentaire</label>
+                                            <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-regime-std" name="conjoint_regime[]" value="Standard">
+                                                    <label class="custom-control-label" for="c-regime-std">Standard</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-regime-vege" name="conjoint_regime[]" value="Végétarien">
+                                                    <label class="custom-control-label" for="c-regime-vege">Végétarien</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-regime-gluten" name="conjoint_regime[]" value="Sans gluten">
+                                                    <label class="custom-control-label" for="c-regime-gluten">Sans gluten</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="c-regime-lactose" name="conjoint_regime[]" value="Sans lactose">
+                                                    <label class="custom-control-label" for="c-regime-lactose">Sans lactose</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Allergies conjoint -->
+                                        <div class="form-group" style="margin-bottom:0;">
+                                            <label>⚠️ Allergies alimentaires</label>
+                                            <input type="text" name="conjoint_allergies" class="form-control" placeholder="Ex: arachides, fruits de mer..." />
                                         </div>
                                     </div>
 
