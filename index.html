@@ -354,30 +354,95 @@
                         <header class="section-header">
                             <h3>Confirmez votre présence</h3>
                         </header>
-                        <div class="row">
-                            <div class="col-12">
-                                <form>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <form action="https://formspree.io/f/xpwzgqkv" method="POST" id="rsvp-form">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="Prénom" />
+                                            <label>Prénom *</label>
+                                            <input type="text" name="prenom" class="form-control" required placeholder="Votre prénom" />
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="Nom" />
+                                            <label>Nom *</label>
+                                            <input type="text" name="nom" class="form-control" required placeholder="Votre nom" />
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <input type="email" class="form-control" placeholder="Votre email" />
+                                            <label>Email *</label>
+                                            <input type="email" name="email" class="form-control" required placeholder="Votre email" />
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="Votre téléphone" />
+                                            <label>Téléphone *</label>
+                                            <input type="tel" name="telephone" class="form-control" required placeholder="Votre téléphone" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Demande particulière" />
+                                        <label>Adresse</label>
+                                        <input type="text" name="adresse" class="form-control" placeholder="Votre adresse complète" />
                                     </div>
-                                    <div><button type="submit">Confirmer</button></div>
+
+                                    <div class="form-group rsvp-couple-check">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="en-couple" name="en_couple" onchange="toggleCouple(this)">
+                                            <label class="custom-control-label" for="en-couple">Je viens en couple ♥</label>
+                                        </div>
+                                    </div>
+
+                                    <div id="couple-fields" style="display:none;background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;margin-bottom:16px;">
+                                        <p style="font-size:13px;color:#FF69B4;font-weight:600;margin-bottom:12px;">Informations de votre accompagnant(e)</p>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Prénom</label>
+                                                <input type="text" name="conjoint_prenom" class="form-control" placeholder="Prénom" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Nom</label>
+                                                <input type="text" name="conjoint_nom" class="form-control" placeholder="Nom" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Demande particulière</label>
+                                        <textarea name="demande" class="form-control" rows="3" placeholder="Allergie, mobilité réduite, autre..."></textarea>
+                                    </div>
+
+                                    <div id="rsvp-success" style="display:none;background:#d4edda;color:#155724;padding:12px 16px;border-radius:4px;margin-bottom:16px;text-align:center;">
+                                        ✓ Merci ! Votre présence a bien été confirmée.
+                                    </div>
+
+                                    <div style="text-align:center;">
+                                        <button type="submit" id="rsvp-btn">Confirmer ma présence</button>
+                                    </div>
                                 </form>
+
+                                <script>
+                                function toggleCouple(cb) {
+                                    document.getElementById('couple-fields').style.display = cb.checked ? 'block' : 'none';
+                                }
+                                document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    var btn = document.getElementById('rsvp-btn');
+                                    btn.textContent = 'Envoi...';
+                                    btn.disabled = true;
+                                    fetch(this.action, {
+                                        method: 'POST',
+                                        body: new FormData(this),
+                                        headers: { 'Accept': 'application/json' }
+                                    }).then(function(r) {
+                                        if (r.ok) {
+                                            document.getElementById('rsvp-success').style.display = 'block';
+                                            document.getElementById('rsvp-form').reset();
+                                            document.getElementById('couple-fields').style.display = 'none';
+                                        } else {
+                                            btn.textContent = 'Erreur, réessayez';
+                                        }
+                                        btn.disabled = false;
+                                        btn.textContent = 'Confirmer ma présence';
+                                    });
+                                });
+                                </script>
                             </div>
                         </div>
                     </div>

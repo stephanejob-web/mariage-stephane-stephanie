@@ -1464,3 +1464,40 @@ html {
 #full-page {
     overflow: visible !important;
 }
+
+/* RSVP Form */
+#rsvp label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.rsvp-couple-check {
+    margin: 10px 0 16px;
+}
+
+.custom-control-label {
+    font-size: 15px !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    color: #333 !important;
+    cursor: pointer;
+    padding-left: 6px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #FF69B4;
+    border-color: #FF69B4;
+}
+
+#couple-fields {
+    animation: fadeDown 0.3s ease;
+}
+
+@keyframes fadeDown {
+    from { opacity:0; transform:translateY(-8px); }
+    to   { opacity:1; transform:translateY(0); }
+}
