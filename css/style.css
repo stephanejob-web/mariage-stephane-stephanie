@@ -1571,12 +1571,18 @@ html {
     padding: 10px 24px;
     border-radius: 25px;
     font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
+    font-weight: 700;
+    text-decoration: none !important;
     transition: opacity 0.2s;
+    -webkit-text-fill-color: #fff;
 }
 
-.resto-btn:hover { opacity: 0.85; text-decoration: none; }
+.resto-btn:hover, .resto-btn:focus, .resto-btn:active {
+    opacity: 0.85;
+    text-decoration: none !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+}
 
 .resto-photos img {
     width: 100%;
