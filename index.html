@@ -457,7 +457,7 @@
                                         <label>Adresse</label>
                                         <div style="position:relative;">
                                             <input type="text" id="adresse-input" name="adresse" class="form-control" placeholder="Commencez à taper votre adresse..." autocomplete="off" />
-                                            <ul id="adresse-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px;list-style:none;margin:0;padding:0;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-height:220px;overflow-y:auto;"></ul>
+                                            <ul id="adresse-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px;list-style:none;margin:0;padding:0;z-index:99999;box-shadow:0 4px 12px rgba(0,0,0,0.15);max-height:220px;overflow-y:auto;"></ul>
                                         </div>
                                     </div>
 
@@ -528,7 +528,7 @@
             <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
             <!-- Popup confirmation RSVP -->
-            <div id="rsvp-popup" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;">
+            <div id="rsvp-popup" style="position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;">
                 <div id="rsvp-popup-bg" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);" onclick="document.getElementById('rsvp-popup').classList.remove('active');"></div>
                 <div style="position:relative;background:#fff;border-radius:24px;max-width:480px;width:100%;padding:50px 40px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,0.25);animation:popupIn 0.4s cubic-bezier(0.34,1.56,0.64,1);">
                     <div style="font-size:52px;margin-bottom:16px;">💍</div>
