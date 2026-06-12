@@ -450,7 +450,8 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Téléphone *</label>
-                                            <input type="tel" name="telephone" class="form-control" required placeholder="Votre téléphone" />
+                                            <input type="tel" id="tel-input" name="telephone" class="form-control" required placeholder="06 12 34 56 78" />
+                                            <div id="tel-error" style="display:none;color:#e74c3c;font-size:12px;margin-top:4px;">⚠ Numéro invalide (ex: 06 12 34 56 78)</div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -496,11 +497,44 @@
                                 <script>
                                 function toggleCouple(cb) {
                                     document.getElementById('couple-fields').style.display = cb.checked ? 'block' : 'none';
+                                    checkFormValidity();
                                 }
+
+                                var telRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+
+                                function checkFormValidity() {
+                                    var prenom = document.querySelector('[name="prenom"]').value.trim();
+                                    var nom    = document.querySelector('[name="nom"]').value.trim();
+                                    var email  = document.querySelector('[name="email"]').value.trim();
+                                    var tel    = document.getElementById('tel-input').value.trim();
+                                    var telOk  = telRegex.test(tel);
+                                    var btn    = document.getElementById('rsvp-btn');
+                                    var valid  = prenom && nom && email && telOk;
+                                    btn.disabled = !valid;
+                                    btn.style.opacity = valid ? '1' : '0.45';
+                                    btn.style.cursor  = valid ? 'pointer' : 'not-allowed';
+                                    return telOk;
+                                }
+
+                                document.getElementById('tel-input').addEventListener('input', function() {
+                                    var ok = checkFormValidity();
+                                    var err = document.getElementById('tel-error');
+                                    err.style.display = (this.value.trim() && !ok) ? 'block' : 'none';
+                                    this.style.borderColor = (this.value.trim() && !ok) ? '#e74c3c' : '';
+                                });
+
+                                ['prenom','nom','email'].forEach(function(n) {
+                                    document.querySelector('[name="' + n + '"]').addEventListener('input', checkFormValidity);
+                                });
+
+                                // Init bouton grisé
+                                checkFormValidity();
+
                                 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
                                     e.preventDefault();
+                                    if (!checkFormValidity()) return;
                                     var btn = document.getElementById('rsvp-btn');
-                                    btn.textContent = 'Envoi...';
+                                    btn.textContent = 'Envoi en cours...';
                                     btn.disabled = true;
                                     fetch(this.action, {
                                         method: 'POST',
@@ -511,11 +545,16 @@
                                             document.getElementById('rsvp-form').reset();
                                             document.getElementById('couple-fields').style.display = 'none';
                                             document.getElementById('rsvp-popup').classList.add('active');
+                                            checkFormValidity();
                                         } else {
                                             btn.textContent = 'Erreur, réessayez';
+                                            btn.disabled = false;
+                                            btn.style.opacity = '1';
                                         }
+                                    }).catch(function() {
+                                        btn.textContent = 'Erreur, réessayez';
                                         btn.disabled = false;
-                                        btn.textContent = 'Confirmer ma présence';
+                                        btn.style.opacity = '1';
                                     });
                                 });
                                 </script>
