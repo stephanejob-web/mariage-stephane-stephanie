@@ -294,24 +294,36 @@ h6 {
 
 @media (max-width: 575.98px) {
     #intro h1 {
-        margin-bottom: 10px;
-        font-size: 50px;
-        font-weight: 500;
-        letter-spacing: 5px;
+        margin-bottom: 8px;
+        font-size: clamp(32px, 10vw, 50px);
+        font-weight: 700;
+        letter-spacing: clamp(2px, 1.5vw, 5px);
     }
 
     #intro h2 {
-        font-size: 30px;
+        font-size: clamp(22px, 7vw, 30px);
     }
 
     #intro p {
-        font-size: 18px;
+        font-size: clamp(14px, 4vw, 18px);
     }
 
     #intro h4 {
-        margin-bottom: 20px;
-        font-size: 20px;
+        margin-bottom: 12px;
+        font-size: clamp(14px, 4.5vw, 20px);
+        letter-spacing: 2px;
     }
+}
+
+@media (max-width: 380px) {
+    #intro h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+    #intro h2 { font-size: 20px; }
+    #intro p  { font-size: 13px; }
+    #intro h4 { font-size: 13px; margin-bottom: 8px; }
 }
 
 #intro .carousel-fade {
@@ -1410,15 +1422,23 @@ h6 {
 }
 
 @media (max-width: 768px) {
-    /* Countdown plus petit sur mobile */
+    /* Countdown mobile */
     #header-clock {
         bottom: 15px;
-        padding: 0 10px;
+        padding: 0 8px;
     }
     #header-clock p {
         font-size: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         letter-spacing: 3px;
+    }
+    /* Boxes countdown plus compactes */
+    #hc-days, #hc-hours, #hc-minutes, #hc-seconds {
+        min-width: clamp(48px, 13vw, 80px) !important;
+        height: clamp(48px, 13vw, 80px) !important;
+        line-height: clamp(48px, 13vw, 80px) !important;
+        font-size: clamp(22px, 6.5vw, 50px) !important;
+        border-radius: 6px !important;
     }
 
     /* Galerie scrollable sur mobile */
@@ -1446,11 +1466,26 @@ h6 {
 
 /* iOS 100vh fix */
 @supports (-webkit-touch-callout: none) {
-    #intro {
-        height: -webkit-fill-available;
+    #intro { height: -webkit-fill-available; }
+    #intro .carousel-item { height: -webkit-fill-available; }
+    #header-clock { bottom: max(20px, env(safe-area-inset-bottom, 20px)); }
+}
+
+/* dvh pour Chrome Android récent */
+@supports (height: 100dvh) {
+    #intro { height: 100dvh; }
+    #intro .carousel-item { height: 100dvh; }
+}
+
+/* Empêche chevauchement contenu/countdown sur petits écrans */
+@media (max-width: 575.98px) {
+    #intro .carousel-container {
+        align-items: flex-start;
+        padding-top: clamp(60px, 12vh, 100px);
+        padding-bottom: 180px;
     }
     #header-clock {
-        bottom: 20px;
+        bottom: max(10px, env(safe-area-inset-bottom, 10px));
     }
 }
 
