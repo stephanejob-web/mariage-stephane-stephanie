@@ -1391,3 +1391,55 @@ h6 {
         padding: 50px 0 !important;
     }
 }
+
+/* ===== MOBILE OPTIMISATIONS ===== */
+
+/* Countdown iPhone safe area */
+#header-clock {
+    bottom: max(30px, env(safe-area-inset-bottom, 20px));
+}
+
+@media (max-width: 768px) {
+    /* Countdown plus petit sur mobile */
+    #header-clock {
+        bottom: 15px;
+        padding: 0 10px;
+    }
+    #header-clock p {
+        font-size: 10px;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+    }
+
+    /* Galerie scrollable sur mobile */
+    .section-3 {
+        height: auto !important;
+        min-height: 100vh;
+    }
+    .gal-grid {
+        columns: 2;
+        column-gap: 4px;
+        padding: 0 4px 30px;
+    }
+
+    /* Sections post-galerie scroll fluide */
+    #full-page {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Navigation dots cachés sur mobile */
+    #fp-nav {
+        display: none !important;
+    }
+}
+
+/* iOS 100vh fix */
+@supports (-webkit-touch-callout: none) {
+    #intro {
+        height: -webkit-fill-available;
+    }
+    #header-clock {
+        bottom: 20px;
+    }
+}
