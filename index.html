@@ -298,20 +298,157 @@
                 <div class="container">
                     <header class="section-header">
                         <h3>Notre histoire</h3>
-                        <p style="color:#aaa;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-top:-10px;">En images &amp; en vidéo</p>
+                        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-top:-10px;">En images &amp; en vidéo</p>
                     </header>
-                    <div class="video-wrapper">
-                        <video
-                            controls
-                            preload="metadata"
-                            poster=""
-                            playsinline
-                        >
+                    <div class="vp-wrapper">
+                        <video id="vp-video" preload="metadata" playsinline>
                             <source src="video.mp4" type="video/mp4">
                         </video>
+
+                        <!-- Bouton play central -->
+                        <div class="vp-big-play" id="vp-big-play">
+                            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+
+                        <!-- Contrôles -->
+                        <div class="vp-controls" id="vp-controls">
+                            <div class="vp-progress-wrap">
+                                <div class="vp-progress-bar" id="vp-bar">
+                                    <div class="vp-progress-fill" id="vp-fill"></div>
+                                    <div class="vp-progress-thumb" id="vp-thumb"></div>
+                                </div>
+                            </div>
+                            <div class="vp-bottom">
+                                <div class="vp-left">
+                                    <button class="vp-btn" id="vp-play">
+                                        <svg id="vp-icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                                        <svg id="vp-icon-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                                    </button>
+                                    <div class="vp-volume">
+                                        <button class="vp-btn" id="vp-mute">
+                                            <svg id="vp-icon-vol" viewBox="0 0 24 24"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54,8.46a5,5,0,0,1,0,7.07"/><path d="M19.07,4.93a10,10,0,0,1,0,14.14"/></svg>
+                                            <svg id="vp-icon-muted" viewBox="0 0 24 24" style="display:none"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                                        </button>
+                                        <input type="range" id="vp-vol" min="0" max="1" step="0.05" value="1">
+                                    </div>
+                                    <span class="vp-time" id="vp-time">0:00 / 0:00</span>
+                                </div>
+                                <div class="vp-right">
+                                    <button class="vp-btn" id="vp-fs">
+                                        <svg viewBox="0 0 24 24"><polyline points="15,3 21,3 21,9"/><polyline points="9,21 3,21 3,15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
+            <script>
+            (function() {
+                var vid = document.getElementById('vp-video');
+                var bigPlay = document.getElementById('vp-big-play');
+                var controls = document.getElementById('vp-controls');
+                var playBtn = document.getElementById('vp-play');
+                var iconPlay = document.getElementById('vp-icon-play');
+                var iconPause = document.getElementById('vp-icon-pause');
+                var fill = document.getElementById('vp-fill');
+                var thumb = document.getElementById('vp-thumb');
+                var bar = document.getElementById('vp-bar');
+                var timeEl = document.getElementById('vp-time');
+                var muteBtn = document.getElementById('vp-mute');
+                var iconVol = document.getElementById('vp-icon-vol');
+                var iconMuted = document.getElementById('vp-icon-muted');
+                var volRange = document.getElementById('vp-vol');
+                var fsBtn = document.getElementById('vp-fs');
+                var wrapper = document.querySelector('.vp-wrapper');
+                var hideTimer;
+
+                function fmt(s) {
+                    var m = Math.floor(s/60), sec = Math.floor(s%60);
+                    return m + ':' + (sec<10?'0':'')+sec;
+                }
+                function updatePlay() {
+                    iconPlay.style.display  = vid.paused ? '' : 'none';
+                    iconPause.style.display = vid.paused ? 'none' : '';
+                    bigPlay.classList.toggle('vp-big-play--hidden', !vid.paused);
+                }
+                function updateProgress() {
+                    var pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
+                    fill.style.width = pct + '%';
+                    thumb.style.left = pct + '%';
+                    timeEl.textContent = fmt(vid.currentTime) + ' / ' + fmt(vid.duration || 0);
+                }
+
+                // Play/pause
+                function togglePlay() { vid.paused ? vid.play() : vid.pause(); }
+                bigPlay.addEventListener('click', togglePlay);
+                playBtn.addEventListener('click', togglePlay);
+                vid.addEventListener('click', togglePlay);
+                vid.addEventListener('play', updatePlay);
+                vid.addEventListener('pause', updatePlay);
+                vid.addEventListener('timeupdate', updateProgress);
+
+                // Barre de progression
+                bar.addEventListener('click', function(e) {
+                    var rect = bar.getBoundingClientRect();
+                    vid.currentTime = ((e.clientX - rect.left) / rect.width) * vid.duration;
+                });
+                var dragging = false;
+                bar.addEventListener('mousedown', function() { dragging = true; });
+                window.addEventListener('mousemove', function(e) {
+                    if (!dragging) return;
+                    var rect = bar.getBoundingClientRect();
+                    var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                    vid.currentTime = pct * vid.duration;
+                });
+                window.addEventListener('mouseup', function() { dragging = false; });
+
+                // Volume
+                volRange.addEventListener('input', function() {
+                    vid.volume = this.value;
+                    vid.muted = this.value == 0;
+                    iconVol.style.display   = vid.muted ? 'none' : '';
+                    iconMuted.style.display = vid.muted ? '' : 'none';
+                    this.style.setProperty('--vp-vol-pct', (this.value * 100) + '%');
+                });
+                muteBtn.addEventListener('click', function() {
+                    vid.muted = !vid.muted;
+                    iconVol.style.display   = vid.muted ? 'none' : '';
+                    iconMuted.style.display = vid.muted ? '' : 'none';
+                    volRange.value = vid.muted ? 0 : vid.volume;
+                });
+
+                // Plein écran
+                fsBtn.addEventListener('click', function() {
+                    if (!document.fullscreenElement) {
+                        (wrapper.requestFullscreen || wrapper.webkitRequestFullscreen).call(wrapper);
+                    } else {
+                        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                    }
+                });
+
+                // Auto-hide contrôles
+                function showControls() {
+                    controls.classList.add('vp-controls--visible');
+                    clearTimeout(hideTimer);
+                    if (!vid.paused) hideTimer = setTimeout(function() {
+                        controls.classList.remove('vp-controls--visible');
+                    }, 3000);
+                }
+                wrapper.addEventListener('mousemove', showControls);
+                wrapper.addEventListener('touchstart', showControls, {passive:true});
+                wrapper.addEventListener('mouseleave', function() {
+                    if (!vid.paused) controls.classList.remove('vp-controls--visible');
+                });
+                // Toujours visible si en pause
+                vid.addEventListener('pause', function() { controls.classList.add('vp-controls--visible'); });
+                vid.addEventListener('play',  function() { showControls(); });
+
+                // Init
+                vid.addEventListener('loadedmetadata', updateProgress);
+                controls.classList.add('vp-controls--visible');
+            })();
+            </script>
 
             <!-- Mot des mariés -->
             <section class="section" style="background:#fff5f9;padding:70px 0;">
