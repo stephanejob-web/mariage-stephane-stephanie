@@ -536,7 +536,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Email *</label>
-                                            <input type="email" name="email" class="form-control" required placeholder="Votre email" />
+                                            <input type="email" id="email-input" name="email" class="form-control" required placeholder="Votre email" />
+                                            <div id="email-error" style="display:none;color:#e74c3c;font-size:12px;margin-top:4px;">⚠ Adresse email invalide (ex: prenom@email.com)</div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Téléphone *</label>
@@ -551,74 +552,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group rsvp-couple-check">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="en-couple" name="en_couple" onchange="toggleCouple(this)">
-                                            <label class="custom-control-label" for="en-couple">Je viens en couple ♥</label>
-                                        </div>
-                                    </div>
-
-                                    <div id="couple-fields" style="display:none;background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;margin-bottom:16px;">
-                                        <p style="font-size:13px;color:#FF69B4;font-weight:700;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;">♥ Informations de votre accompagnant(e)</p>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Prénom</label>
-                                                <input type="text" name="conjoint_prenom" class="form-control" placeholder="Prénom" />
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Nom</label>
-                                                <input type="text" name="conjoint_nom" class="form-control" placeholder="Nom" />
-                                            </div>
-                                        </div>
-                                        <!-- Plat conjoint -->
-                                        <div class="form-group" style="margin-top:8px;">
-                                            <label style="font-weight:600;color:#FF69B4;margin-bottom:10px;display:block;">🍽 Préférence de plat</label>
-                                            <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-plat-viande" name="conjoint_plat" value="Viande">
-                                                    <label class="custom-control-label" for="c-plat-viande">🥩 Viande</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-plat-poisson" name="conjoint_plat" value="Poisson">
-                                                    <label class="custom-control-label" for="c-plat-poisson">🐟 Poisson</label>
-                                                </div>
-                                            </div>
-                                            <div id="err-c-plat" class="rsvp-field-error" style="display:none;">Veuillez choisir la préférence de plat de votre conjoint(e).</div>
-                                        </div>
-                                        <!-- Cocktail apéritif conjoint -->
-                                        <div class="form-group" style="margin-top:8px;">
-                                            <label style="font-weight:600;color:#FF69B4;margin-bottom:10px;display:block;">🍹 Cocktail à l'apéritif</label>
-                                            <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-cocktail-alcool" name="conjoint_cocktail" value="Avec alcool">
-                                                    <label class="custom-control-label" for="c-cocktail-alcool">Avec alcool</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-cocktail-sans" name="conjoint_cocktail" value="Sans alcool">
-                                                    <label class="custom-control-label" for="c-cocktail-sans">Sans alcool</label>
-                                                </div>
-                                            </div>
-                                            <div id="err-c-cocktail" class="rsvp-field-error" style="display:none;">Veuillez choisir le cocktail de votre conjoint(e).</div>
-                                        </div>
-                                        <!-- Vin à table conjoint -->
-                                        <div class="form-group" style="margin-top:8px;">
-                                            <label style="font-weight:600;color:#FF69B4;margin-bottom:10px;display:block;">🍷 Vin à table</label>
-                                            <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-vin-rouge" name="conjoint_vin" value="Vin rouge">
-                                                    <label class="custom-control-label" for="c-vin-rouge">Vin rouge</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-vin-rose" name="conjoint_vin" value="Rosé">
-                                                    <label class="custom-control-label" for="c-vin-rose">Rosé</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="c-vin-sans" name="conjoint_vin" value="Sans alcool">
-                                                    <label class="custom-control-label" for="c-vin-sans">Sans alcool</label>
-                                                </div>
-                                            </div>
-                                            <div id="err-c-vin" class="rsvp-field-error" style="display:none;">Veuillez choisir le vin de votre conjoint(e).</div>
-                                        </div>
+                                    <div class="form-group rsvp-couple-toggle">
+                                        <input type="checkbox" id="en-couple" name="en_couple" onchange="toggleCouple(this)" style="display:none;">
+                                        <label for="en-couple" class="rsvp-couple-label">
+                                            <span class="rsvp-couple-icon">♥</span>
+                                            Je viens en couple
+                                            <span class="rsvp-couple-badge">+ accompagnant(e)</span>
+                                        </label>
                                     </div>
 
                                     <!-- Intro préférences -->
@@ -629,56 +569,82 @@
                                         </p>
                                     </div>
 
-                                    <!-- Préférence de plat -->
-                                    <div class="form-group" style="background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;">
-                                        <label style="font-weight:600;color:#FF69B4;margin-bottom:12px;display:block;">🍽 Préférence de plat</label>
-                                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="plat-viande" name="plat" value="Viande">
-                                                <label class="custom-control-label" for="plat-viande">🥩 Viande</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="plat-poisson" name="plat" value="Poisson">
-                                                <label class="custom-control-label" for="plat-poisson">🐟 Poisson</label>
-                                            </div>
-                                        </div>
-                                        <div id="err-plat" class="rsvp-field-error" style="display:none;">Veuillez choisir votre préférence de plat.</div>
-                                    </div>
+                                    <!-- Grille préférences : Vous + Accompagnant -->
+                                    <div class="rsvp-prefs-grid">
 
-                                    <!-- Cocktail apéritif -->
-                                    <div class="form-group" style="background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;">
-                                        <label style="font-weight:600;color:#FF69B4;margin-bottom:12px;display:block;">🍹 Cocktail à l'apéritif</label>
-                                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="cocktail-alcool" name="cocktail" value="Avec alcool">
-                                                <label class="custom-control-label" for="cocktail-alcool">Avec alcool</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="cocktail-sans" name="cocktail" value="Sans alcool">
-                                                <label class="custom-control-label" for="cocktail-sans">Sans alcool</label>
-                                            </div>
-                                        </div>
-                                        <div id="err-cocktail" class="rsvp-field-error" style="display:none;">Veuillez choisir votre cocktail à l'apéritif.</div>
-                                    </div>
+                                        <!-- Carte : Vous -->
+                                        <div class="rsvp-person-card rsvp-card-vous">
+                                            <div class="rsvp-person-header rsvp-header-vous">👤 Vous</div>
 
-                                    <!-- Vin à table -->
-                                    <div class="form-group" style="background:#fff8fb;border-left:3px solid #FF69B4;padding:15px 20px;border-radius:4px;">
-                                        <label style="font-weight:600;color:#FF69B4;margin-bottom:12px;display:block;">🍷 Vin à table</label>
-                                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vin-rouge" name="vin" value="Vin rouge">
-                                                <label class="custom-control-label" for="vin-rouge">Vin rouge</label>
+                                            <div class="form-group">
+                                                <label class="rsvp-pref-label">🍽 Préférence de plat</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="plat-viande" name="plat" value="Viande"><label for="plat-viande">🥩 Viande</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="plat-poisson" name="plat" value="Poisson"><label for="plat-poisson">🐟 Poisson</label></div>
+                                                </div>
+                                                <div id="err-plat" class="rsvp-field-error" style="display:none;">Veuillez choisir votre préférence de plat.</div>
                                             </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vin-rose" name="vin" value="Rosé">
-                                                <label class="custom-control-label" for="vin-rose">Rosé</label>
+
+                                            <div class="form-group">
+                                                <label class="rsvp-pref-label">🍹 Cocktail à l'apéritif</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="cocktail-alcool" name="cocktail" value="Avec alcool"><label for="cocktail-alcool">🍹 Avec alcool</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="cocktail-sans" name="cocktail" value="Sans alcool"><label for="cocktail-sans">🧃 Sans alcool</label></div>
+                                                </div>
+                                                <div id="err-cocktail" class="rsvp-field-error" style="display:none;">Veuillez choisir votre cocktail.</div>
                                             </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vin-sans" name="vin" value="Sans alcool">
-                                                <label class="custom-control-label" for="vin-sans">Sans alcool</label>
+
+                                            <div class="form-group" style="margin-bottom:0;">
+                                                <label class="rsvp-pref-label">🍷 Vin à table</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="vin-rouge" name="vin" value="Vin rouge"><label for="vin-rouge">🍷 Rouge</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="vin-rose" name="vin" value="Rosé"><label for="vin-rose">🥂 Rosé</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="vin-sans" name="vin" value="Sans alcool"><label for="vin-sans">💧 Sans alcool</label></div>
+                                                </div>
+                                                <div id="err-vin" class="rsvp-field-error" style="display:none;">Veuillez choisir votre vin.</div>
                                             </div>
                                         </div>
-                                        <div id="err-vin" class="rsvp-field-error" style="display:none;">Veuillez choisir votre vin à table.</div>
+
+                                        <!-- Carte : Accompagnant (masquée par défaut) -->
+                                        <div class="rsvp-person-card rsvp-card-conjoint" id="couple-fields" style="display:none;">
+                                            <div class="rsvp-person-header rsvp-header-conjoint">♥ Votre accompagnant(e)</div>
+
+                                            <div class="form-group" style="margin-bottom:14px;">
+                                                <input type="text" name="conjoint_prenom" class="form-control" placeholder="Prénom de votre accompagnant(e)" />
+                                            </div>
+                                            <div class="form-group" style="margin-bottom:14px;">
+                                                <input type="text" name="conjoint_nom" class="form-control" placeholder="Nom de votre accompagnant(e)" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="rsvp-pref-label">🍽 Préférence de plat</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="c-plat-viande" name="conjoint_plat" value="Viande"><label for="c-plat-viande">🥩 Viande</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="c-plat-poisson" name="conjoint_plat" value="Poisson"><label for="c-plat-poisson">🐟 Poisson</label></div>
+                                                </div>
+                                                <div id="err-c-plat" class="rsvp-field-error" style="display:none;">Veuillez choisir la préférence de plat de votre accompagnant(e).</div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="rsvp-pref-label">🍹 Cocktail à l'apéritif</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="c-cocktail-alcool" name="conjoint_cocktail" value="Avec alcool"><label for="c-cocktail-alcool">🍹 Avec alcool</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="c-cocktail-sans" name="conjoint_cocktail" value="Sans alcool"><label for="c-cocktail-sans">🧃 Sans alcool</label></div>
+                                                </div>
+                                                <div id="err-c-cocktail" class="rsvp-field-error" style="display:none;">Veuillez choisir le cocktail de votre accompagnant(e).</div>
+                                            </div>
+
+                                            <div class="form-group" style="margin-bottom:0;">
+                                                <label class="rsvp-pref-label">🍷 Vin à table</label>
+                                                <div class="rsvp-pills">
+                                                    <div class="rsvp-pill"><input type="radio" id="c-vin-rouge" name="conjoint_vin" value="Vin rouge"><label for="c-vin-rouge">🍷 Rouge</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="c-vin-rose" name="conjoint_vin" value="Rosé"><label for="c-vin-rose">🥂 Rosé</label></div>
+                                                    <div class="rsvp-pill"><input type="radio" id="c-vin-sans" name="conjoint_vin" value="Sans alcool"><label for="c-vin-sans">💧 Sans alcool</label></div>
+                                                </div>
+                                                <div id="err-c-vin" class="rsvp-field-error" style="display:none;">Veuillez choisir le vin de votre accompagnant(e).</div>
+                                            </div>
+                                        </div>
+
                                     </div>
 
                                     <!-- Autres infos -->
@@ -708,35 +674,40 @@
 
                                 <script>
                                 function toggleCouple(cb) {
-                                    document.getElementById('couple-fields').style.display = cb.checked ? 'block' : 'none';
+                                    var card = document.getElementById('couple-fields');
+                                    var grid = document.querySelector('.rsvp-prefs-grid');
+                                    card.style.display = cb.checked ? 'block' : 'none';
+                                    grid.classList.toggle('rsvp-prefs-grid--couple', cb.checked);
                                     checkFormValidity();
                                 }
 
-                                var telRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+                                var telRegex   = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+                                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
                                 function radioSelected(name) {
                                     return !!document.querySelector('input[name="' + name + '"]:checked');
                                 }
 
                                 function checkFormValidity() {
-                                    var prenom = document.querySelector('[name="prenom"]').value.trim();
-                                    var nom    = document.querySelector('[name="nom"]').value.trim();
-                                    var email  = document.querySelector('[name="email"]').value.trim();
-                                    var tel    = document.getElementById('tel-input').value.trim();
-                                    var telOk  = telRegex.test(tel);
-                                    var platOk = radioSelected('plat');
+                                    var prenom    = document.querySelector('[name="prenom"]').value.trim();
+                                    var nom       = document.querySelector('[name="nom"]').value.trim();
+                                    var email     = document.getElementById('email-input').value.trim();
+                                    var emailOk   = emailRegex.test(email);
+                                    var tel       = document.getElementById('tel-input').value.trim();
+                                    var telOk     = telRegex.test(tel);
+                                    var platOk    = radioSelected('plat');
                                     var cocktailOk = radioSelected('cocktail');
-                                    var vinOk  = radioSelected('vin');
+                                    var vinOk     = radioSelected('vin');
                                     var coupleVisible = document.getElementById('couple-fields').style.display !== 'none';
-                                    var cPlatOk = !coupleVisible || radioSelected('conjoint_plat');
+                                    var cPlatOk     = !coupleVisible || radioSelected('conjoint_plat');
                                     var cCocktailOk = !coupleVisible || radioSelected('conjoint_cocktail');
-                                    var cVinOk = !coupleVisible || radioSelected('conjoint_vin');
-                                    var btn    = document.getElementById('rsvp-btn');
-                                    var valid  = prenom && nom && email && telOk && platOk && cocktailOk && vinOk && cPlatOk && cCocktailOk && cVinOk;
+                                    var cVinOk      = !coupleVisible || radioSelected('conjoint_vin');
+                                    var btn   = document.getElementById('rsvp-btn');
+                                    var valid = prenom && nom && emailOk && telOk && platOk && cocktailOk && vinOk && cPlatOk && cCocktailOk && cVinOk;
                                     btn.disabled = !valid;
                                     btn.style.opacity = valid ? '1' : '0.45';
                                     btn.style.cursor  = valid ? 'pointer' : 'not-allowed';
-                                    return telOk;
+                                    return { telOk: telOk, emailOk: emailOk };
                                 }
 
                                 function showRadioErrors() {
@@ -765,14 +736,23 @@
                                     });
                                 });
 
-                                document.getElementById('tel-input').addEventListener('input', function() {
-                                    var ok = checkFormValidity();
-                                    var err = document.getElementById('tel-error');
-                                    err.style.display = (this.value.trim() && !ok) ? 'block' : 'none';
-                                    this.style.borderColor = (this.value.trim() && !ok) ? '#e74c3c' : '';
+                                document.getElementById('email-input').addEventListener('input', function() {
+                                    var result = checkFormValidity();
+                                    var err = document.getElementById('email-error');
+                                    var val = this.value.trim();
+                                    err.style.display = (val && !result.emailOk) ? 'block' : 'none';
+                                    this.style.borderColor = (val && !result.emailOk) ? '#e74c3c' : '';
                                 });
 
-                                ['prenom','nom','email'].forEach(function(n) {
+                                document.getElementById('tel-input').addEventListener('input', function() {
+                                    var result = checkFormValidity();
+                                    var err = document.getElementById('tel-error');
+                                    var val = this.value.trim();
+                                    err.style.display = (val && !result.telOk) ? 'block' : 'none';
+                                    this.style.borderColor = (val && !result.telOk) ? '#e74c3c' : '';
+                                });
+
+                                ['prenom','nom'].forEach(function(n) {
                                     document.querySelector('[name="' + n + '"]').addEventListener('input', checkFormValidity);
                                 });
 
@@ -782,7 +762,12 @@
                                 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
                                     e.preventDefault();
                                     showRadioErrors();
-                                    if (!checkFormValidity()) return;
+                                    var result = checkFormValidity();
+                                    var emailVal = document.getElementById('email-input').value.trim();
+                                    document.getElementById('email-error').style.display = (emailVal && !result.emailOk) ? 'block' : 'none';
+                                    if (!result.telOk || !result.emailOk) return;
+                                    var btn = document.getElementById('rsvp-btn');
+                                    if (btn.disabled) return;
                                     var btn = document.getElementById('rsvp-btn');
                                     btn.textContent = 'Envoi en cours...';
                                     btn.disabled = true;
