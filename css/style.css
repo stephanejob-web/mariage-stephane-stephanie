@@ -2247,6 +2247,252 @@ html {
 }
 
 /* Toggle couple */
+.rsvp-engagement {
+    position: relative;
+    background: linear-gradient(160deg, #fffdfa 0%, #fff6ef 55%, #ffeee0 100%);
+    border: 1px solid rgba(230, 145, 55, 0.25);
+    border-radius: 18px;
+    padding: 34px 30px 26px;
+    margin: 30px 0 24px;
+    color: #6b4423;
+    font-size: 14.5px;
+    line-height: 1.75;
+    box-shadow: 0 10px 30px rgba(230, 145, 55, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.rsvp-engagement::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e69137, #FF69B4, #e69137, transparent);
+    opacity: 0.7;
+}
+
+.rsvp-engagement-badge {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b35c00;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(230, 145, 55, 0.25);
+}
+
+.rsvp-engagement-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #7a3f00;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+}
+
+.rsvp-engagement-heart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF69B4, #ff8dc7);
+    color: #fff;
+    font-size: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.35);
+}
+
+.rsvp-engagement-lead {
+    text-align: center;
+    font-size: 15px;
+    color: #6b4423;
+    margin: 0 0 4px !important;
+}
+
+.rsvp-engagement-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 20px 0 14px;
+    color: #b35c00;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.rsvp-engagement-divider::before,
+.rsvp-engagement-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(230, 145, 55, 0.4), transparent);
+}
+
+.rsvp-engagement-sub {
+    text-align: center;
+    font-size: 14.5px;
+    margin: 0 0 16px !important;
+    color: #6b4423;
+}
+
+.rsvp-engagement strong {
+    color: #b35c00;
+    font-weight: 700;
+    white-space: nowrap;
+    background: linear-gradient(180deg, transparent 60%, rgba(255, 105, 180, 0.15) 60%);
+    padding: 0 3px;
+}
+
+.rsvp-engagement-contacts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 4px 0 18px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rsvp-contact-chip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(230, 145, 55, 0.22);
+    border-radius: 14px;
+    text-decoration: none !important;
+    color: #6b4423;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    box-shadow: 0 2px 6px rgba(230, 145, 55, 0.05);
+    min-width: 0;
+}
+
+.rsvp-contact-chip:hover,
+.rsvp-contact-chip:focus {
+    transform: translateY(-2px);
+    background: #fff;
+    border-color: rgba(255, 105, 180, 0.5);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.18);
+    color: #b32b7a;
+    text-decoration: none !important;
+}
+
+.rsvp-contact-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff5f9, #ffeaf3);
+    color: #FF69B4;
+    font-size: 16px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.rsvp-contact-txt {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.3;
+}
+
+.rsvp-contact-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b35c00;
+    opacity: 0.75;
+    margin-bottom: 2px;
+}
+
+.rsvp-contact-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b4423;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rsvp-contact-chip:hover .rsvp-contact-val {
+    color: #b32b7a;
+}
+
+.rsvp-engagement-note {
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    color: #8a6942;
+    margin: 6px 0 0 !important;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .rsvp-engagement {
+        padding: 30px 20px 22px;
+    }
+    .rsvp-engagement-title {
+        font-size: 17px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .rsvp-engagement-badge {
+        top: 12px;
+        right: 12px;
+        font-size: 9px;
+        padding: 3px 8px;
+    }
+    .rsvp-contact-val {
+        font-size: 13px;
+    }
+}
+
+.rsvp-deadline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #fff5f9, #ffeaf3);
+    border: 1px solid rgba(255, 105, 180, 0.35);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    color: #b32b7a;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(255, 105, 180, 0.08);
+}
+
+.rsvp-deadline strong {
+    color: #FF69B4;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.rsvp-deadline-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
 .rsvp-couple-toggle {
     margin: 16px 0 20px;
 }
@@ -2338,65 +2584,173 @@ html {
 /* Grille préférences deux cartes */
 .rsvp-prefs-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     margin-bottom: 20px;
 }
 
 .rsvp-prefs-grid--couple {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .rsvp-person-card {
-    border-radius: 14px;
-    padding: 22px;
+    position: relative;
+    border-radius: 16px;
+    padding: 22px 18px 20px;
     border: 2px solid transparent;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.rsvp-person-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
 }
 
 .rsvp-card-vous {
-    background: linear-gradient(135deg, #fff5f9, #fff0f5);
-    border-color: rgba(255,105,180,0.3);
+    background: linear-gradient(160deg, #fff5f9 0%, #ffeef5 100%);
+    border-color: rgba(255, 105, 180, 0.35);
+}
+
+.rsvp-card-vous::before {
+    background: linear-gradient(90deg, #FF69B4, #ff8dc7);
 }
 
 .rsvp-card-conjoint {
-    background: linear-gradient(135deg, #fdf0f7, #fce8f3);
-    border-color: #FF69B4;
+    background: linear-gradient(160deg, #f7f0fb 0%, #efe4f7 100%);
+    border-color: rgba(168, 108, 200, 0.45);
+}
+
+.rsvp-card-conjoint::before {
+    background: linear-gradient(90deg, #a86cc8, #c9a5d8);
 }
 
 .rsvp-person-header {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 4px;
     align-items: center;
-    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed;
+}
+
+.rsvp-person-avatar {
+    grid-row: 1 / 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.rsvp-person-title {
+    grid-column: 2;
+    grid-row: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    line-height: 1.2;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.rsvp-person-tag {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .rsvp-header-vous {
-    color: #c0497a;
-    border-color: rgba(255,105,180,0.3);
+    color: #b32b7a;
+    border-color: rgba(255, 105, 180, 0.35);
+}
+
+.rsvp-header-vous .rsvp-person-avatar {
+    background: linear-gradient(135deg, #FF69B4, #ff8dc7);
+}
+
+.rsvp-header-vous .rsvp-person-tag {
+    color: #b32b7a;
+    border-color: rgba(255, 105, 180, 0.4);
 }
 
 .rsvp-header-conjoint {
-    color: #FF69B4;
-    border-color: #FF69B4;
+    color: #7a3f9a;
+    border-color: rgba(168, 108, 200, 0.4);
+}
+
+.rsvp-header-conjoint .rsvp-person-avatar {
+    background: linear-gradient(135deg, #a86cc8, #c9a5d8);
+}
+
+.rsvp-header-conjoint .rsvp-person-tag {
+    color: #7a3f9a;
+    border-color: rgba(168, 108, 200, 0.45);
+}
+
+.rsvp-card-conjoint .rsvp-pill input[type="radio"]:checked + label {
+    background: #a86cc8;
+    border-color: #a86cc8;
+    box-shadow: 0 3px 10px rgba(168, 108, 200, 0.35);
+}
+
+.rsvp-card-conjoint .rsvp-pill label:hover {
+    border-color: #a86cc8;
+    color: #a86cc8;
+    background: #f7f0fb;
+}
+
+.rsvp-card-conjoint .form-control:focus {
+    border-color: #a86cc8 !important;
+    box-shadow: 0 0 0 3px rgba(168, 108, 200, 0.15) !important;
+}
+
+@media (max-width: 480px) {
+    .rsvp-person-title {
+        font-size: 17px;
+    }
+    .rsvp-person-tag {
+        font-size: 9px;
+        padding: 3px 7px;
+    }
 }
 
 .rsvp-pref-label {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
     display: block;
     color: #444;
     text-transform: uppercase;
-    white-space: nowrap;
+    line-height: 1.35;
 }
 
 /* Pills radio */
