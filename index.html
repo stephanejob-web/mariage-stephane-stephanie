@@ -474,87 +474,71 @@
                         <header class="section-header">
                             <h3>Le Programme</h3>
                         </header>
-                        <div class="timeline">
+                        <div class="prog-list">
 
-                            <div class="tl-item">
-                                <div class="tl-icon"><i class="fa fa-heart"></i></div>
-                                <div class="tl-content">
-                                    <h4>15h30 — Cérémonie civile</h4>
-                                    <p>Mairie annexe d'Ollioules<br>2 Place Marius Trotobas, 83190 Ollioules</p>
-                                    <div style="margin-top:16px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,105,180,0.18);border:1px solid rgba(255,105,180,0.15);">
-                                        <div style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-                                            <div style="display:flex;align-items:center;gap:8px;">
-                                                <i class="fa fa-map-marker" style="color:#fff;font-size:16px;"></i>
-                                                <span style="color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Mairie annexe d'Ollioules</span>
-                                            </div>
-                                            <a href="https://maps.google.com/?q=2+Place+Marius+Trotobas,+83190+Ollioules" target="_blank" style="color:#fff;font-size:12px;opacity:0.9;text-decoration:none;border:1px solid rgba(255,255,255,0.5);padding:4px 10px;border-radius:20px;">Ouvrir →</a>
+                            <!-- Cérémonie -->
+                            <div class="prog-item">
+                                <div class="prog-left">
+                                    <span class="prog-time">15h30</span>
+                                    <div class="prog-dot"><i class="fa fa-heart"></i></div>
+                                    <div class="prog-line"></div>
+                                </div>
+                                <div class="prog-box">
+                                    <h4 class="prog-title">Cérémonie civile</h4>
+                                    <p class="prog-place"><i class="fa fa-map-marker"></i> Mairie annexe d'Ollioules<br>2 Place Marius Trotobas, 83190 Ollioules</p>
+                                    <a href="https://maps.google.com/?q=2+Place+Marius+Trotobas,+83190+Ollioules" target="_blank" class="prog-map-btn"><i class="fa fa-external-link"></i> Ouvrir dans Maps</a>
+                                    <iframe src="https://maps.google.com/maps?q=2+Place+Marius+Trotobas,+83190+Ollioules,+France&output=embed" width="100%" height="220" style="border:0;display:block;border-radius:14px;margin-top:14px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Vin d'honneur -->
+                            <div class="prog-item">
+                                <div class="prog-left">
+                                    <span class="prog-time">16h30</span>
+                                    <div class="prog-dot"><i class="fa fa-glass"></i></div>
+                                    <div class="prog-line"></div>
+                                </div>
+                                <div class="prog-box">
+                                    <h4 class="prog-title">Vin d'honneur</h4>
+                                    <p class="prog-desc">Retrouvez-nous pour un moment de convivialité autour d'un verre chez les mariés.</p>
+                                    <p class="prog-place"><i class="fa fa-map-marker"></i> 616 Route de la Seyne, 83190 Ollioules</p>
+                                    <a href="https://maps.google.com/?q=43.1237283,5.8466746" target="_blank" class="prog-map-btn"><i class="fa fa-external-link"></i> Ouvrir dans Maps</a>
+                                    <iframe src="https://maps.google.com/maps?q=43.1237283,5.8466746&output=embed" width="100%" height="220" style="border:0;display:block;border-radius:14px;margin-top:14px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Dîner -->
+                            <div class="prog-item">
+                                <div class="prog-left">
+                                    <span class="prog-time">19h00</span>
+                                    <div class="prog-dot"><i class="fa fa-cutlery"></i></div>
+                                </div>
+                                <div class="prog-box">
+                                    <h4 class="prog-title">Dîner — Restaurant L'Albatros</h4>
+                                    <p class="prog-desc">En bord de mer, vue sur la Méditerranée.</p>
+                                    <p class="prog-place"><i class="fa fa-map-marker"></i> 39 avenue du Port, 83270 SAINT-CYR-SUR-MER</p>
+                                    <div class="prog-parking"><span>🅿️</span> Parking à proximité — <strong>prévoir de la monnaie</strong></div>
+                                    <a href="https://maps.google.com/?q=L'Albatros+39+avenue+du+Port+83270+Saint-Cyr-sur-Mer" target="_blank" class="prog-map-btn"><i class="fa fa-external-link"></i> Ouvrir dans Maps</a>
+                                    <iframe src="https://maps.google.com/maps?q=L'Albatros,+39+avenue+du+Port,+83270+Saint-Cyr-sur-Mer,+France&output=embed" width="100%" height="220" style="border:0;display:block;border-radius:14px;margin-top:14px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <!-- Notice boissons -->
+                                    <style>
+                                        @keyframes boisson-flash {
+                                            0%, 100% { box-shadow: 0 4px 20px rgba(255,105,180,0.2); }
+                                            50%       { box-shadow: 0 4px 40px rgba(255,105,180,0.55), 0 0 0 4px rgba(255,105,180,0.15); }
+                                        }
+                                    </style>
+                                    <div style="margin-top:20px;border-radius:14px;overflow:hidden;border:2px solid #FF69B4;animation:boisson-flash 1.6s ease-in-out infinite;">
+                                        <div style="background:linear-gradient(135deg,#FF69B4,#ff4da6);padding:12px 18px;display:flex;align-items:center;gap:10px;">
+                                            <span style="font-size:22px;">🍷</span>
+                                            <span style="color:#fff;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;">⚠️ Information importante</span>
                                         </div>
-                                        <iframe src="https://maps.google.com/maps?q=2+Place+Marius+Trotobas,+83190+Ollioules,+France&output=embed" width="100%" height="240" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        <div style="background:#fff;padding:18px 20px;">
+                                            <p style="color:#111;font-size:16px;font-weight:600;line-height:1.8;margin:0;">Nous avons prévu des boissons pour accompagner votre repas. Si vous souhaitez des consommations supplémentaires, celles-ci seront <strong style="color:#FF69B4;">à votre charge</strong> auprès du restaurant.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="tl-item">
-                                <div class="tl-icon"><i class="fa fa-glass"></i></div>
-                                <div class="tl-content">
-                                    <h4>16h30 — Vin d'honneur</h4>
-                                    <p>Après la cérémonie, retrouvez-nous pour un moment de convivialité autour d'un verre. Rendez-vous chez nous au <strong>616 Route de la Seyne, 83190 Ollioules</strong>.</p>
-                                    <div style="margin-top:16px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,105,180,0.18);border:1px solid rgba(255,105,180,0.15);">
-                                        <div style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-                                            <div style="display:flex;align-items:center;gap:8px;">
-                                                <i class="fa fa-home" style="color:#fff;font-size:16px;"></i>
-                                                <span style="color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Chez les mariés</span>
-                                            </div>
-                                            <a href="https://maps.google.com/?q=43.1217107,5.8472459" target="_blank" style="color:#fff;font-size:12px;opacity:0.9;text-decoration:none;border:1px solid rgba(255,255,255,0.5);padding:4px 10px;border-radius:20px;">Ouvrir →</a>
-                                        </div>
-                                        <iframe src="https://maps.google.com/maps?q=43.1217107,5.8472459&output=embed" width="100%" height="240" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tl-item">
-                                <div class="tl-icon"><i class="fa fa-cutlery"></i></div>
-                                <div class="tl-content">
-                                    <h4>19h00 — Dîner — Restaurant L'Albatros</h4>
-                                    <p>39 Avenue du Port, 83270 Saint-Cyr-sur-Mer<br>En bord de mer, vue sur la Méditerranée</p>
-                                    <div style="display:inline-flex;align-items:center;gap:10px;background:#fff8e1;border:2px solid #f0b429;border-radius:10px;padding:12px 18px;margin-top:12px;">
-                                        <span style="font-size:26px;line-height:1;">🅿️</span>
-                                        <span style="font-size:16px;font-weight:700;color:#7a5200;">Parking disponible à proximité — <span style="color:#d4880a;">prévoir de la monnaie</span></span>
-                                    </div>
-                                    <div style="margin-top:16px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,105,180,0.18);border:1px solid rgba(255,105,180,0.15);">
-                                        <div style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-                                            <div style="display:flex;align-items:center;gap:8px;">
-                                                <i class="fa fa-cutlery" style="color:#fff;font-size:16px;"></i>
-                                                <span style="color:#fff;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Restaurant L'Albatros</span>
-                                            </div>
-                                            <a href="https://maps.google.com/?q=39+Avenue+du+Port,+83270+Saint-Cyr-sur-Mer" target="_blank" style="color:#fff;font-size:12px;opacity:0.9;text-decoration:none;border:1px solid rgba(255,255,255,0.5);padding:4px 10px;border-radius:20px;">Ouvrir →</a>
-                                        </div>
-                                        <iframe src="https://maps.google.com/maps?q=39+Avenue+du+Port,+83270+Saint-Cyr-sur-Mer,+France&output=embed" width="100%" height="240" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Notice boissons -->
-                        <style>
-                            @keyframes boisson-flash {
-                                0%, 100% { background: #fff; box-shadow: 0 6px 30px rgba(255,105,180,0.2); }
-                                50%       { background: #fff5f9; box-shadow: 0 6px 60px rgba(255,105,180,0.6), 0 0 0 6px rgba(255,105,180,0.25); }
-                            }
-                            @keyframes boisson-badge {
-                                0%, 100% { transform: scale(1); }
-                                50%       { transform: scale(1.12); }
-                            }
-                        </style>
-                        <div style="margin-top:40px;border-radius:20px;overflow:hidden;border:3px solid #FF69B4;animation:boisson-flash 1.4s ease-in-out infinite;">
-                            <div style="background:linear-gradient(135deg,#FF69B4,#ff4da6);padding:16px 28px;display:flex;align-items:center;gap:14px;">
-                                <span style="font-size:28px;animation:boisson-badge 1.4s ease-in-out infinite;display:inline-block;">🍷</span>
-                                <span style="color:#fff;font-size:16px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,0.15);">⚠️ Information importante</span>
-                            </div>
-                            <div style="background:#fff;padding:26px 32px;">
-                                <p style="color:#111;font-size:19px;font-weight:600;line-height:1.85;margin:0;">Nous avons prévu des boissons pour accompagner votre repas. Si vous souhaitez des consommations supplémentaires, celles-ci seront <strong style="color:#FF69B4;">à votre charge</strong> directement auprès du restaurant.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -567,30 +551,32 @@
                         <header class="section-header">
                             <h3>Le Dîner du Soir</h3>
                         </header>
-                        <div class="row align-items-center" style="margin-bottom:40px;">
-                            <div class="col-md-6">
-                                <h4 style="color:#FF69B4;font-size:28px;font-weight:700;margin-bottom:10px;">L'Albatros</h4>
-                                <p style="font-size:15px;line-height:1.8;margin-bottom:10px;">Pour notre repas du soir, nous vous avons réservé une table au bord de la Méditerranée. L'Albatros, niché à 200 mètres du port de Saint-Cyr-sur-Mer, nous accueillera dans un cadre exceptionnel face à la mer — cuisine généreuse à base de produits locaux et de saison pour terminer cette belle journée ensemble.</p>
-                                <p style="color:#555;font-size:15px;margin-bottom:6px;"><i class="fa fa-map-marker" style="color:#FF69B4;margin-right:6px;"></i>39 Avenue du Port, 83270 Saint-Cyr-sur-Mer</p>
-                                <p style="color:#555;font-size:15px;margin-bottom:16px;"><i class="fa fa-clock-o" style="color:#FF69B4;margin-right:6px;"></i>Dîner à partir de 19h00</p>
-<a href="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/" target="_blank" class="resto-btn">Voir le site du restaurant</a>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="resto-photos">
-                                    <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l800lq/websites/da254ff803704fc086213a01b7228245/img/ACCUEILSALLE1_20230606161918.jpg" alt="Salle du restaurant">
-                                </div>
+                        <!-- Texte + infos -->
+                        <div class="row justify-content-center" style="margin-bottom:40px;">
+                            <div class="col-md-10 text-center">
+                                <p style="font-size:clamp(17px,2vw,20px);line-height:1.9;color:#333;margin-bottom:16px;">Pour notre repas du soir, nous vous avons réservé une table au bord de la Méditerranée. L'Albatros, niché à deux pas du port de Saint-Cyr-sur-Mer, nous accueillera dans un cadre exceptionnel face à la mer — cuisine généreuse à base de produits locaux et de saison pour terminer cette belle journée ensemble.</p>
+                                <p style="color:#555;font-size:17px;margin-bottom:6px;"><i class="fa fa-map-marker" style="color:#FF69B4;margin-right:6px;"></i>39 avenue du Port, 83270 SAINT-CYR-SUR-MER</p>
+                                <p style="color:#555;font-size:17px;margin-bottom:24px;"><i class="fa fa-clock-o" style="color:#FF69B4;margin-right:6px;"></i>Dîner à partir de 19h00</p>
+                                <a href="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/" target="_blank" class="resto-btn">Voir le site du restaurant</a>
                             </div>
                         </div>
 
-                        <div class="row resto-gallery-row" style="margin-bottom:40px;">
-                            <div class="col-md-4">
-                                <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l1200lq/websites/da254ff803704fc086213a01b7228245/img/accueilplat_20230425100713.png" alt="Plat">
+                        <!-- Galerie photos -->
+                        <div class="resto-grid">
+                            <div class="resto-grid-main">
+                                <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l1200lq/websites/da254ff803704fc086213a01b7228245/img/RESTOvisu1_20230606162435.png" alt="Terrasse vue mer L'Albatros">
+                                <div class="resto-grid-caption">🌊 Terrasse face à la Méditerranée</div>
                             </div>
-                            <div class="col-md-4">
-                                <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l1920lq/websites/da254ff803704fc086213a01b7228245/img/TRIO-ACCUEIL_20230606161928.png" alt="Entrées">
-                            </div>
-                            <div class="col-md-4">
-                                <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l800lq/websites/da254ff803704fc086213a01b7228245/img/dessertdetoure_20230425100618.png" alt="Dessert">
+                            <div class="resto-grid-side">
+                                <div class="resto-grid-small">
+                                    <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l800lq/websites/da254ff803704fc086213a01b7228245/img/ACCUEILSALLE1_20230606161918.jpg" alt="Salle du restaurant">
+                                </div>
+                                <div class="resto-grid-small">
+                                    <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l800lq/websites/da254ff803704fc086213a01b7228245/img/ACCUEILSALLE2_20230606161920.jpg" alt="Salle vue mer">
+                                </div>
+                                <div class="resto-grid-small" style="grid-column: span 2;">
+                                    <img src="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/media/cache/resolve/l1200lq/websites/da254ff803704fc086213a01b7228245/img/RESTOSALLE_20230606162615.jpg" alt="Restaurant L'Albatros" style="min-height:180px;">
+                                </div>
                             </div>
                         </div>
 
