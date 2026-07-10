@@ -978,6 +978,51 @@ h6 {
     background-color: #ffffff;
 }
 
+.enfants-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 2px solid #f0d6e8;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.stepper-btn {
+    background: #fff;
+    border: none;
+    color: #FF69B4;
+    font-size: 26px;
+    font-weight: 700;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.stepper-btn:hover {
+    background: #fff0f7;
+}
+
+.stepper-btn:active {
+    background: #ffe0ef;
+}
+
+.stepper-val {
+    min-width: 60px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    border-left: 2px solid #f0d6e8;
+    border-right: 2px solid #f0d6e8;
+    padding: 0 10px;
+    height: 54px;
+    line-height: 54px;
+}
+
 #rsvp .form-control:focus {
     border-color: #FF69B4;
     box-shadow: 0 0 0 3px rgba(255,105,180,0.12);

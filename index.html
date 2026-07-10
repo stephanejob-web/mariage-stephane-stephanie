@@ -749,7 +749,23 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>👶 Enfant(s) à table</label>
-                                            <input type="number" name="enfants" class="form-control" min="0" max="10" value="0" placeholder="0">
+                                            <div class="enfants-stepper">
+                                                <button type="button" class="stepper-btn" onclick="stepperChange(-1)">−</button>
+                                                <span class="stepper-val" id="stepper-display">0</span>
+                                                <button type="button" class="stepper-btn" onclick="stepperChange(1)">+</button>
+                                            </div>
+                                            <input type="hidden" name="enfants" id="enfants-val" value="0">
+                                            <script>
+                                                function stepperChange(delta) {
+                                                    var input = document.getElementById('enfants-val');
+                                                    var display = document.getElementById('stepper-display');
+                                                    var val = parseInt(input.value) + delta;
+                                                    if (val < 0) val = 0;
+                                                    if (val > 10) val = 10;
+                                                    input.value = val;
+                                                    display.textContent = val;
+                                                }
+                                            </script>
                                         </div>
                                     </div>
 
