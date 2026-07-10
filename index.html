@@ -644,10 +644,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group rsvp-couple-toggle">
-                                        <input type="checkbox" id="en-couple" name="en_couple" onchange="toggleCouple(this)" style="display:none;">
+                                        <input type="checkbox" id="en-couple" name="en_couple" onchange="toggleCouple(this)" class="rsvp-couple-check">
                                         <label for="en-couple" class="rsvp-couple-label">
-                                            <span class="rsvp-couple-icon">♥</span>
-                                            Je viens en couple
+                                            <span class="rsvp-couple-switch" aria-hidden="true"></span>
+                                            <span class="rsvp-couple-text">
+                                                <span class="rsvp-couple-icon">♥</span>
+                                                Je viens en couple
+                                            </span>
                                             <span class="rsvp-couple-badge">+ accompagnant(e)</span>
                                         </label>
                                     </div>
