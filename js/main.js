@@ -19,17 +19,21 @@
         scrollingSpeed: 0,
     });
 
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
+    // Back to top button — natif, fluide
+    var btt = document.querySelector('.back-to-top');
+    var bttTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!bttTicking) {
+            requestAnimationFrame(function() {
+                btt.classList.toggle('visible', window.scrollY > 200);
+                bttTicking = false;
+            });
+            bttTicking = true;
         }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
+    }, { passive: true });
+    btt.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Initiate menu
@@ -102,17 +106,3 @@
 })(jQuery);
 
 
-// Lightbox
-function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    var lb = document.getElementById('lightbox');
-    lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-});
