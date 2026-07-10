@@ -964,7 +964,18 @@ h6 {
     padding: 14px 20px;
     font-size: 19px;
     transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fdfbfd;
+    background-color: #ffffff;
+    color: #111111;
+}
+
+#rsvp select.form-control {
+    color: #111111;
+    background-color: #ffffff;
+}
+
+#rsvp select.form-control option {
+    color: #111111;
+    background-color: #ffffff;
 }
 
 #rsvp .form-control:focus {
