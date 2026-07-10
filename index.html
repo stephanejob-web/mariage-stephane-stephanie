@@ -12,7 +12,7 @@
         <link href="img/favicon.svg" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:500i,700i,900i|Nunito:700,900|Raleway:300,400,500" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,500;1,700;1,900&family=Cormorant+Garant:wght@400;500;600;700&family=Nunito:wght@600;700;900&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 
         <!-- Bootstrap CSS File -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -497,7 +497,7 @@
                             <div class="tl-item">
                                 <div class="tl-icon"><i class="fa fa-glass"></i></div>
                                 <div class="tl-content">
-                                    <h4>Vin d'honneur</h4>
+                                    <h4>16h30 — Vin d'honneur</h4>
                                     <p>Après la cérémonie, retrouvez-nous pour un moment de convivialité autour d'un verre. Rendez-vous chez nous au <strong>616 Route de la Seyne, 83190 Ollioules</strong>.</p>
                                     <div style="margin-top:16px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,105,180,0.18);border:1px solid rgba(255,105,180,0.15);">
                                         <div style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
@@ -515,9 +515,12 @@
                             <div class="tl-item">
                                 <div class="tl-icon"><i class="fa fa-cutlery"></i></div>
                                 <div class="tl-content">
-                                    <h4>Dîner — Restaurant L'Albatros</h4>
+                                    <h4>19h00 — Dîner — Restaurant L'Albatros</h4>
                                     <p>39 Avenue du Port, 83270 Saint-Cyr-sur-Mer<br>En bord de mer, vue sur la Méditerranée</p>
-                                    <p style="font-size:13px;color:#888;margin-top:8px;">🅿️ <em>Parking disponible à proximité — prévoir de la monnaie</em></p>
+                                    <div style="display:inline-flex;align-items:center;gap:10px;background:#fff8e1;border:2px solid #f0b429;border-radius:10px;padding:12px 18px;margin-top:12px;">
+                                        <span style="font-size:26px;line-height:1;">🅿️</span>
+                                        <span style="font-size:16px;font-weight:700;color:#7a5200;">Parking disponible à proximité — <span style="color:#d4880a;">prévoir de la monnaie</span></span>
+                                    </div>
                                     <div style="margin-top:16px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,105,180,0.18);border:1px solid rgba(255,105,180,0.15);">
                                         <div style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
                                             <div style="display:flex;align-items:center;gap:8px;">
@@ -531,6 +534,27 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        <!-- Notice boissons -->
+                        <style>
+                            @keyframes boisson-flash {
+                                0%, 100% { background: #fff; box-shadow: 0 6px 30px rgba(255,105,180,0.2); }
+                                50%       { background: #fff5f9; box-shadow: 0 6px 60px rgba(255,105,180,0.6), 0 0 0 6px rgba(255,105,180,0.25); }
+                            }
+                            @keyframes boisson-badge {
+                                0%, 100% { transform: scale(1); }
+                                50%       { transform: scale(1.12); }
+                            }
+                        </style>
+                        <div style="margin-top:40px;border-radius:20px;overflow:hidden;border:3px solid #FF69B4;animation:boisson-flash 1.4s ease-in-out infinite;">
+                            <div style="background:linear-gradient(135deg,#FF69B4,#ff4da6);padding:16px 28px;display:flex;align-items:center;gap:14px;">
+                                <span style="font-size:28px;animation:boisson-badge 1.4s ease-in-out infinite;display:inline-block;">🍷</span>
+                                <span style="color:#fff;font-size:16px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,0.15);">⚠️ Information importante</span>
+                            </div>
+                            <div style="background:#fff;padding:26px 32px;">
+                                <p style="color:#111;font-size:19px;font-weight:600;line-height:1.85;margin:0;">Nous avons prévu des boissons pour accompagner votre repas. Si vous souhaitez des consommations supplémentaires, celles-ci seront <strong style="color:#FF69B4;">à votre charge</strong> directement auprès du restaurant.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -547,9 +571,9 @@
                             <div class="col-md-6">
                                 <h4 style="color:#FF69B4;font-size:28px;font-weight:700;margin-bottom:10px;">L'Albatros</h4>
                                 <p style="font-size:15px;line-height:1.8;margin-bottom:10px;">Pour notre repas du soir, nous vous avons réservé une table au bord de la Méditerranée. L'Albatros, niché à 200 mètres du port de Saint-Cyr-sur-Mer, nous accueillera dans un cadre exceptionnel face à la mer — cuisine généreuse à base de produits locaux et de saison pour terminer cette belle journée ensemble.</p>
-                                <p style="color:#888;font-size:14px;margin-bottom:6px;"><i class="fa fa-map-marker" style="color:#FF69B4;margin-right:6px;"></i>39 Avenue du Port, 83270 Saint-Cyr-sur-Mer</p>
-                                <p style="color:#888;font-size:14px;margin-bottom:20px;"><i class="fa fa-clock-o" style="color:#FF69B4;margin-right:6px;"></i>Dîner prévu en soirée après la cérémonie</p>
-                                <a href="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/" target="_blank" class="resto-btn">Voir le site du restaurant</a>
+                                <p style="color:#555;font-size:15px;margin-bottom:6px;"><i class="fa fa-map-marker" style="color:#FF69B4;margin-right:6px;"></i>39 Avenue du Port, 83270 Saint-Cyr-sur-Mer</p>
+                                <p style="color:#555;font-size:15px;margin-bottom:16px;"><i class="fa fa-clock-o" style="color:#FF69B4;margin-right:6px;"></i>Dîner à partir de 19h00</p>
+<a href="https://www.lalbatros-restaurant-saint-cyr-sur-mer.fr/" target="_blank" class="resto-btn">Voir le site du restaurant</a>
                             </div>
                             <div class="col-md-6">
                                 <div class="resto-photos">
@@ -593,7 +617,7 @@
                             <div class="col-md-8 text-center">
                                 <i class="fa fa-heart" style="font-size:36px;color:#FF69B4;margin-bottom:20px;display:block;"></i>
                                 <p style="font-size:16px;line-height:1.8;margin-bottom:10px;">Votre présence à nos côtés est le plus beau des cadeaux.</p>
-                                <p style="font-size:15px;color:#888;margin-bottom:30px;">Si vous souhaitez néanmoins nous gâter, nous avons choisi une cagnotte en ligne plutôt qu'une liste traditionnelle. Chaque contribution, grande ou petite, nous touchera profondément.</p>
+                                <p style="font-size:15px;color:#555;margin-bottom:30px;">Si vous souhaitez néanmoins nous gâter, nous avons choisi une cagnotte en ligne plutôt qu'une liste traditionnelle. Chaque contribution, grande ou petite, nous touchera profondément.</p>
                                 <a href="https://www.onparticipe.fr/c/oLcOzFub" target="_blank" style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);border:none;border-radius:30px;color:#fff!important;-webkit-text-fill-color:#fff;display:inline-block;font-size:17px;font-weight:700;padding:14px 40px;text-decoration:none;letter-spacing:0.5px;box-shadow:0 6px 24px rgba(255,105,180,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">♥ &nbsp;Contribuer à la cagnotte</a>
                             </div>
                         </div>
