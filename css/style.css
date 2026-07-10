@@ -964,7 +964,71 @@ h6 {
     padding: 14px 20px;
     font-size: 19px;
     transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fdfbfd;
+    background-color: #ffffff;
+    color: #111111;
+}
+
+#rsvp select.form-control {
+    color: #111111;
+    background-color: #ffffff;
+}
+
+#rsvp select.form-control option {
+    color: #111111;
+    background-color: #ffffff;
+}
+
+.enfants-stepper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    border: 2px solid #f0d6e8;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.stepper-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fff;
+    border: none;
+    color: #FF69B4;
+    font-size: 28px;
+    font-weight: 700;
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+.stepper-btn:hover { background: #fff0f7; }
+.stepper-btn:active { background: #ffe0ef; }
+
+.stepper-val {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 64px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    border-left: 2px solid #f0d6e8;
+    border-right: 2px solid #f0d6e8;
+    height: 54px;
+    padding: 0 12px;
+    flex-shrink: 0;
 }
 
 #rsvp .form-control:focus {

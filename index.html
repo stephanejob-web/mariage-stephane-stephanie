@@ -749,19 +749,23 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>👶 Enfant(s) à table</label>
-                                            <select name="enfants" class="form-control">
-                                                <option value="0">Aucun</option>
-                                                <option value="1">1 enfant</option>
-                                                <option value="2">2 enfants</option>
-                                                <option value="3">3 enfants</option>
-                                                <option value="4">4 enfants</option>
-                                                <option value="5">5 enfants</option>
-                                                <option value="6">6 enfants</option>
-                                                <option value="7">7 enfants</option>
-                                                <option value="8">8 enfants</option>
-                                                <option value="9">9 enfants</option>
-                                                <option value="10">10 enfants</option>
-                                            </select>
+                                            <div class="enfants-stepper">
+                                                <button type="button" class="stepper-btn" onclick="stepperChange(-1)">−</button>
+                                                <span class="stepper-val" id="stepper-display">0</span>
+                                                <button type="button" class="stepper-btn" onclick="stepperChange(1)">+</button>
+                                            </div>
+                                            <input type="hidden" name="enfants" id="enfants-val" value="0">
+                                            <script>
+                                                function stepperChange(delta) {
+                                                    var input = document.getElementById('enfants-val');
+                                                    var display = document.getElementById('stepper-display');
+                                                    var val = parseInt(input.value) + delta;
+                                                    if (val < 0) val = 0;
+                                                    if (val > 10) val = 10;
+                                                    input.value = val;
+                                                    display.textContent = val;
+                                                }
+                                            </script>
                                         </div>
                                     </div>
 
