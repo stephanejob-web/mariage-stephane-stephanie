@@ -620,6 +620,10 @@
                         </header>
                         <div class="row justify-content-center">
                             <div class="col-md-8">
+                                <div class="rsvp-deadline">
+                                    <span class="rsvp-deadline-icon">🗓</span>
+                                    <span>Merci de nous répondre avant le <strong>1<sup>er</sup> mars 2027</strong></span>
+                                </div>
                                 <form action="https://formspree.io/f/mojzkrbp" method="POST" id="rsvp-form">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -668,7 +672,11 @@
 
                                         <!-- Carte : Vous -->
                                         <div class="rsvp-person-card rsvp-card-vous">
-                                            <div class="rsvp-person-header rsvp-header-vous">👤 Vous</div>
+                                            <div class="rsvp-person-header rsvp-header-vous">
+                                                <span class="rsvp-person-avatar">👤</span>
+                                                <span class="rsvp-person-title">Vous</span>
+                                                <span class="rsvp-person-tag">Invité principal</span>
+                                            </div>
 
                                             <div class="form-group">
                                                 <label class="rsvp-pref-label">🍽 Préférence de plat</label>
@@ -701,7 +709,11 @@
 
                                         <!-- Carte : Accompagnant (masquée par défaut) -->
                                         <div class="rsvp-person-card rsvp-card-conjoint" id="couple-fields" style="display:none;">
-                                            <div class="rsvp-person-header rsvp-header-conjoint">♥ Votre accompagnant(e)</div>
+                                            <div class="rsvp-person-header rsvp-header-conjoint">
+                                                <span class="rsvp-person-avatar">♥</span>
+                                                <span class="rsvp-person-title">Votre accompagnant(e)</span>
+                                                <span class="rsvp-person-tag">En couple</span>
+                                            </div>
 
                                             <div class="form-group" style="margin-bottom:14px;">
                                                 <input type="text" name="conjoint_prenom" class="form-control" placeholder="Prénom de votre accompagnant(e)" />
@@ -771,6 +783,38 @@
                                         <textarea name="demande" class="form-control" rows="2" placeholder="Toute autre information utile..."></textarea>
                                     </div>
 
+
+                                    <div class="rsvp-engagement">
+                                        <div class="rsvp-engagement-badge">Engagement</div>
+                                        <div class="rsvp-engagement-title">
+                                            <span class="rsvp-engagement-heart">♥</span>
+                                            En confirmant, vous vous engagez à être des nôtres
+                                        </div>
+                                        <p class="rsvp-engagement-lead">Les repas au restaurant seront réservés sur la base de vos inscriptions.</p>
+
+                                        <div class="rsvp-engagement-divider"><span>En cas d'empêchement</span></div>
+
+                                        <p class="rsvp-engagement-sub">Merci de nous prévenir avant le <strong>1<sup>er</sup> mars 2027</strong></p>
+
+                                        <div class="rsvp-engagement-contacts">
+                                            <a href="mailto:perso.stephane@proton.me" class="rsvp-contact-chip">
+                                                <span class="rsvp-contact-ico">✉</span>
+                                                <span class="rsvp-contact-txt">
+                                                    <span class="rsvp-contact-label">Email</span>
+                                                    <span class="rsvp-contact-val">perso.stephane@proton.me</span>
+                                                </span>
+                                            </a>
+                                            <a href="tel:+33779492969" class="rsvp-contact-chip">
+                                                <span class="rsvp-contact-ico">☎</span>
+                                                <span class="rsvp-contact-txt">
+                                                    <span class="rsvp-contact-label">Téléphone</span>
+                                                    <span class="rsvp-contact-val">07 79 49 29 69</span>
+                                                </span>
+                                            </a>
+                                        </div>
+
+                                        <p class="rsvp-engagement-note">Passé cette date, les commandes seront finalisées et ne pourront plus être modifiées.<br>Merci pour votre compréhension&nbsp;💕</p>
+                                    </div>
 
                                     <div style="text-align:center;">
                                         <button type="submit" id="rsvp-btn">Confirmer ma présence</button>
