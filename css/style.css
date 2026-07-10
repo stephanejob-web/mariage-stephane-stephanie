@@ -2,6 +2,10 @@
 /* ------------------ General CSS ------------------ */
 /* ================================================= */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: #333333;
     font-family: 'Raleway', sans-serif;
@@ -50,19 +54,30 @@ h6 {
 
 .back-to-top {
     position: fixed;
-    display: none;
     background: #FF69B4;
-    border-radius: 30px;
+    border-radius: 50%;
     color: #fff;
     width: 44px;
     height: 44px;
     text-align: center;
     line-height: 1;
     font-size: 16px;
-    right: 15px;
-    bottom: 15px;
-    transition: background 0.5s;
+    right: 20px;
+    bottom: 20px;
     z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s, visibility 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .back-to-top i {
@@ -1650,6 +1665,42 @@ html {
     font-size: 14px;
     line-height: 1.7;
     margin: 0;
+}
+
+/* ===== VIDEO ===== */
+.video-section {
+    background: #111;
+    padding: 80px 0;
+}
+
+.video-section .section-header h3 {
+    color: #fff;
+}
+
+.video-section .section-header p {
+    color: rgba(255,255,255,0.4) !important;
+}
+
+.video-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    background: #000;
+    position: relative;
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: block;
+    max-height: 520px;
+    object-fit: contain;
+    background: #000;
+}
+
+@media (max-width: 767px) {
+    .video-wrapper video { max-height: 260px; }
 }
 
 /* ===== RESTAURANT ===== */
