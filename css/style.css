@@ -1940,6 +1940,7 @@ html {
     pointer-events: auto;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    z-index: 3;
 }
 
 .vp-big-play svg {
@@ -1970,6 +1971,10 @@ html {
     pointer-events: none;
     transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 2;
+}
+
+.vp-title-overlay * {
+    pointer-events: none;
 }
 
 .vp-title-tag {
