@@ -173,38 +173,36 @@
             </section>
             <!-- Header Section End -->
 
-            <!-- Story Section Start-->
-            <section class="section section-2">
-                <div id="story">
-                    <div class="container">
-                        <header class="section-header">
-                            <h3>Notre Histoire</h3>
-                        </header>
-                        <div class="row justify-content-center">
-                            <div class="col-md-10 text-center">
-                                <h4>Nous nous marions</h4>
-                                <p>
-                                    Tout a commencé en 2009 sur un site de rencontres. Un profil, un message hésitant, et le coup de foudre. Dix-sept ans plus tard, nous sommes heureux de vous inviter à célébrer notre amour le 19 juin 2027.
-                                </p>
-                                <a href="story.html">Lire la suite</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Story Section end -->
-
-            <!-- Section Vidéo -->
-            <section class="section video-section">
+            <!-- Notre Histoire (texte + vidéo fusionnés) -->
+            <section class="section video-section" id="story">
                 <div class="container">
                     <header class="section-header">
-                        <h3>Notre histoire</h3>
-                        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-top:-10px;">En images &amp; en vidéo</p>
+                        <h3>Notre Histoire</h3>
+                        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-top:-10px;">En quelques mots &amp; en vidéo</p>
                     </header>
+
+                    <!-- Teaser texte -->
+                    <div class="row justify-content-center" style="margin-bottom:50px;">
+                        <div class="col-md-10 text-center">
+                            <h4 style="color:#fff;font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,32px);margin-bottom:22px;letter-spacing:1px;font-weight:500;">Nous nous marions</h4>
+                            <p style="color:rgba(255,255,255,0.78);font-size:clamp(15px,1.7vw,18px);line-height:1.9;margin-bottom:28px;max-width:720px;margin-left:auto;margin-right:auto;">
+                                Tout a commencé en 2009 sur un site de rencontres. Un profil, un message hésitant, et le coup de foudre. Dix-sept ans plus tard, nous sommes heureux de vous inviter à célébrer notre amour le 19 juin 2027.
+                            </p>
+                            <a href="story.html">Lire la suite</a>
+                        </div>
+                    </div>
+
                     <div class="vp-wrapper">
-                        <video id="vp-video" preload="metadata" playsinline>
+                        <video id="vp-video" preload="metadata" playsinline poster="img/slider-1.jpg">
                             <source src="video.mp4" type="video/mp4">
                         </video>
+
+                        <!-- Titre accrocheur sur la vignette -->
+                        <div class="vp-title-overlay" id="vp-title-overlay">
+                            <div class="vp-title-tag">— Une histoire d'amour —</div>
+                            <h4 class="vp-title-main">La rencontre de Stéphane <span>&amp;</span> Stéphanie</h4>
+                            <div class="vp-title-sub">Découvrez comment tout a commencé</div>
+                        </div>
 
                         <!-- Bouton play central -->
                         <div class="vp-big-play" id="vp-big-play">
@@ -268,10 +266,12 @@
                     var m = Math.floor(s/60), sec = Math.floor(s%60);
                     return m + ':' + (sec<10?'0':'')+sec;
                 }
+                var titleOverlay = document.getElementById('vp-title-overlay');
                 function updatePlay() {
                     iconPlay.style.display  = vid.paused ? '' : 'none';
                     iconPause.style.display = vid.paused ? 'none' : '';
                     bigPlay.classList.toggle('vp-big-play--hidden', !vid.paused);
+                    if (titleOverlay) titleOverlay.classList.toggle('vp-title-overlay--hidden', !vid.paused);
                 }
                 function updateProgress() {
                     var pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
