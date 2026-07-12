@@ -32,6 +32,38 @@
     </head>
 
     <body>
+        <!-- Barre de progression de scroll -->
+        <div id="scroll-progress" aria-hidden="true"></div>
+        <style>
+            #scroll-progress {
+                position:fixed;
+                top:0;
+                left:0;
+                height:3px;
+                width:0%;
+                background:linear-gradient(90deg,#FF69B4 0%,#ff8dc7 50%,#FF69B4 100%);
+                box-shadow:0 0 10px rgba(255,105,180,0.6);
+                z-index:9999;
+                transition:width 0.1s ease-out;
+                pointer-events:none;
+            }
+        </style>
+        <script>
+        (function() {
+            var bar = document.getElementById('scroll-progress');
+            function update() {
+                var h = document.documentElement;
+                var scrolled = h.scrollTop || document.body.scrollTop;
+                var height = h.scrollHeight - h.clientHeight;
+                var pct = height > 0 ? (scrolled / height) * 100 : 0;
+                bar.style.width = pct + '%';
+            }
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+        </script>
+
         <div id="full-page">
             <!-- Header Section Start -->
             <section class="section section-1">
@@ -41,11 +73,10 @@
                         <ul>
                             <li class="active"><a href="index.html">Accueil</a></li>
                             <li><a href="story.html">Notre Histoire</a></li>
-                            <li><a href="#gallery">Galerie</a></li>
                             <li><a href="#party">Planning</a></li>
                             <li><a href="#rsvp">Confirmer</a></li>
                             <li><a href="contact.html">Contact</a></li>
-                            <li><a href="https://www.onparticipe.fr/c/oLcOzFub" target="_blank" style="background:#FF69B4;color:#fff!important;-webkit-text-fill-color:#fff;padding:8px 18px;border-radius:20px;font-weight:700;">♥ Cagnotte</a></li>
+                            <li><a href="#registry" style="background:#FF69B4;color:#fff!important;-webkit-text-fill-color:#fff;padding:8px 18px;border-radius:20px;font-weight:700;">♥ Participer à notre bonheur</a></li>
                         </ul>
                     </nav>
                 </header>
@@ -162,136 +193,6 @@
                 </div>
             </section>
             <!-- Story Section end -->
-
-                                    <!-- Gallery Section Start-->
-            <section class="section section-3">
-                <div id="gallery">
-                    <header class="section-header" style="padding-top:60px;">
-                        <h3>Galerie</h3>
-                        <p style="color:#aaa;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-top:-10px;">Quelques instants partagés</p>
-                    </header>
-                    <div class="gal-grid">
-                        <div class="gal-item gal-wide" onclick="openLb(0)">
-                            <img src="img/gallery/DSC_1347.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-tall" onclick="openLb(1)">
-                            <img src="img/gallery/DSC_1352.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item" onclick="openLb(2)">
-                            <img src="img/gallery/DSC_1360.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-wide gal-tall" onclick="openLb(3)">
-                            <img src="img/gallery/DSC_1535.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-tall" onclick="openLb(4)">
-                            <img src="img/gallery/IMG_0100.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item" onclick="openLb(5)">
-                            <img src="img/gallery/IMG_0382.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-wide" onclick="openLb(6)">
-                            <img src="img/gallery/IMG_0679.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-tall" onclick="openLb(7)">
-                            <img src="img/gallery/IMG_0728.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                        <div class="gal-item gal-wide" onclick="openLb(8)">
-                            <img src="img/gallery/IMG_1003.JPEG" loading="lazy" alt="Stéphane &amp; Stéphanie">
-                            <div class="gal-overlay"><span class="gal-zoom">&#x2B;</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Gallery Section end -->
-
-            <!-- Lightbox -->
-            <div id="lb-overlay" onclick="closeLb()">
-                <button id="lb-close" onclick="event.stopPropagation();closeLb()">&times;</button>
-                <div id="lb-main" onclick="event.stopPropagation()">
-                    <button id="lb-prev" onclick="moveLb(-1)">&#10094;</button>
-                    <img id="lb-img" src="" alt="">
-                    <button id="lb-next" onclick="moveLb(1)">&#10095;</button>
-                </div>
-                <div id="lb-counter" onclick="event.stopPropagation()"></div>
-                <div id="lb-thumbs" onclick="event.stopPropagation()"></div>
-            </div>
-            <script>
-                var lbPhotos = ["DSC_1347.JPEG","DSC_1352.JPEG","DSC_1360.JPEG","DSC_1535.JPEG","IMG_0100.JPEG","IMG_0382.JPEG","IMG_0679.JPEG","IMG_0728.JPEG","IMG_1003.JPEG"];
-                var lbIndex = 0;
-
-                function buildThumbs() {
-                    var strip = document.getElementById('lb-thumbs');
-                    lbPhotos.forEach(function(p, i) {
-                        var t = document.createElement('img');
-                        t.src = 'img/gallery/' + p;
-                        t.className = 'lb-thumb';
-                        t.onclick = function() { goLb(i); };
-                        strip.appendChild(t);
-                    });
-                }
-                buildThumbs();
-
-                function updateThumbs() {
-                    document.querySelectorAll('.lb-thumb').forEach(function(t, i) {
-                        t.classList.toggle('lb-thumb-active', i === lbIndex);
-                    });
-                }
-
-                function goLb(i) {
-                    lbIndex = i;
-                    var img = document.getElementById('lb-img');
-                    img.style.opacity = '0';
-                    img.style.transform = 'scale(0.97)';
-                    setTimeout(function() {
-                        img.src = 'img/gallery/' + lbPhotos[lbIndex];
-                        img.style.opacity = '1';
-                        img.style.transform = 'scale(1)';
-                    }, 150);
-                    document.getElementById('lb-counter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
-                    updateThumbs();
-                    // scroll thumb into view
-                    var thumbs = document.querySelectorAll('.lb-thumb');
-                    if (thumbs[lbIndex]) thumbs[lbIndex].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-                }
-
-                function openLb(i) {
-                    lbIndex = i;
-                    document.getElementById('lb-img').src = 'img/gallery/' + lbPhotos[i];
-                    document.getElementById('lb-counter').textContent = (i+1) + ' / ' + lbPhotos.length;
-                    document.getElementById('lb-overlay').classList.add('active');
-                    updateThumbs();
-                }
-                function closeLb() {
-                    document.getElementById('lb-overlay').classList.remove('active');
-                }
-                function moveLb(dir) {
-                    goLb((lbIndex + dir + lbPhotos.length) % lbPhotos.length);
-                }
-                document.addEventListener('keydown', function(e) {
-                    if (!document.getElementById('lb-overlay').classList.contains('active')) return;
-                    if (e.key === 'Escape') closeLb();
-                    if (e.key === 'ArrowRight') moveLb(1);
-                    if (e.key === 'ArrowLeft') moveLb(-1);
-                });
-
-                // Swipe mobile
-                var lbTouchX = null;
-                document.getElementById('lb-main').addEventListener('touchstart', function(e) { lbTouchX = e.touches[0].clientX; });
-                document.getElementById('lb-main').addEventListener('touchend', function(e) {
-                    if (lbTouchX === null) return;
-                    var dx = e.changedTouches[0].clientX - lbTouchX;
-                    if (Math.abs(dx) > 50) moveLb(dx < 0 ? 1 : -1);
-                    lbTouchX = null;
-                });
-            </script>
 
             <!-- Section Vidéo -->
             <section class="section video-section">
@@ -593,23 +494,216 @@
             </section>
 
             <!-- Registry Section Start-->
-            <section class="section section-6">
+            <section class="section section-6" style="background:linear-gradient(135deg,#fff5f9 0%,#ffeef5 50%,#fff5f9 100%);position:relative;overflow:hidden;padding:100px 20px;">
+                <!-- Ornements décoratifs -->
+                <div aria-hidden="true" style="position:absolute;top:-40px;left:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(255,105,180,0.14) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+                <div aria-hidden="true" style="position:absolute;bottom:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,105,180,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+
                 <div id="registry">
-                    <div class="container">
-                        <header class="section-header">
-                            <h3>Participez à notre bonheur</h3>
-                        </header>
+                    <div class="container" style="position:relative;z-index:2;">
                         <div class="row justify-content-center">
-                            <div class="col-md-10 text-center">
-                                <i class="fa fa-heart" style="font-size:52px;color:#FF69B4;margin-bottom:26px;display:block;"></i>
-                                <p style="font-size:clamp(18px,2.2vw,24px);line-height:2;color:#333;font-weight:600;margin-bottom:18px;">Votre présence à nos côtés est le plus beau des cadeaux.</p>
-                                <p style="font-size:clamp(17px,2vw,22px);line-height:1.95;color:#444;margin-bottom:40px;">Si vous souhaitez néanmoins nous gâter, nous avons choisi une cagnotte en ligne plutôt qu'une liste traditionnelle. Chaque contribution, grande ou petite, nous touchera profondément.</p>
-                                <a href="https://www.onparticipe.fr/c/oLcOzFub" target="_blank" style="background:linear-gradient(135deg,#FF69B4,#ff8dc7);border:none;border-radius:30px;color:#fff!important;-webkit-text-fill-color:#fff;display:inline-block;font-size:clamp(17px,2vw,22px);font-weight:700;padding:18px 52px;text-decoration:none;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(255,105,180,0.45);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">♥ &nbsp;Contribuer à la cagnotte</a>
+                            <div class="col-md-9">
+                                <div class="cagnotte-card">
+                                    <!-- Badge -->
+                                    <div class="cagnotte-badge">✨ Notre cagnotte de mariage</div>
+
+                                    <h3 class="cagnotte-title">Participez à notre bonheur</h3>
+                                    <div class="cagnotte-divider"></div>
+
+                                    <div class="cagnotte-heart">♥</div>
+
+                                    <p class="cagnotte-quote">« Votre présence à nos côtés est le plus beau des cadeaux. »</p>
+
+                                    <p class="cagnotte-text">Si vous souhaitez néanmoins nous gâter, nous avons choisi une cagnotte en ligne plutôt qu'une liste traditionnelle.<br><span class="cagnotte-highlight">Chaque contribution, grande ou petite, nous touchera profondément.</span></p>
+
+                                    <a href="https://www.onparticipe.fr/c/oLcOzFub" target="_blank" class="cagnotte-cta">
+                                        <span class="cagnotte-cta-heart">♥</span> Contribuer à la cagnotte
+                                    </a>
+
+                                    <p class="cagnotte-secure">🔒 Paiement 100% sécurisé via onparticipe.fr</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <style>
+                .cagnotte-card {
+                    background:#fff;
+                    border-radius:24px;
+                    padding:clamp(35px,5vw,60px) clamp(25px,4vw,55px);
+                    box-shadow:0 20px 60px rgba(255,105,180,0.18),0 4px 12px rgba(0,0,0,0.04);
+                    text-align:center;
+                    position:relative;
+                    border:1px solid rgba(255,105,180,0.14);
+                }
+                .cagnotte-badge {
+                    display:inline-block;
+                    background:linear-gradient(135deg,#FF69B4,#ff8dc7);
+                    color:#fff;
+                    font-size:11px;
+                    font-weight:800;
+                    letter-spacing:3px;
+                    text-transform:uppercase;
+                    padding:8px 22px;
+                    border-radius:20px;
+                    margin-bottom:26px;
+                    box-shadow:0 4px 14px rgba(255,105,180,0.4);
+                }
+                .cagnotte-title {
+                    font-family:'Playfair Display',serif;
+                    font-size:clamp(28px,4.5vw,44px);
+                    color:#333;
+                    margin-bottom:14px;
+                    letter-spacing:1px;
+                    font-weight:700;
+                }
+                .cagnotte-divider {
+                    width:60px;
+                    height:2px;
+                    background:linear-gradient(135deg,#FF69B4,#ff8dc7);
+                    margin:0 auto 30px;
+                    border-radius:2px;
+                }
+                .cagnotte-heart {
+                    font-size:52px;
+                    color:#FF69B4;
+                    margin-bottom:22px;
+                    line-height:1;
+                    animation:cagnotte-heart-beat 1.8s ease-in-out infinite;
+                }
+                @keyframes cagnotte-heart-beat {
+                    0%,100% { transform:scale(1); }
+                    30%      { transform:scale(1.15); }
+                    50%      { transform:scale(1); }
+                    70%      { transform:scale(1.08); }
+                }
+                .cagnotte-quote {
+                    font-size:clamp(18px,2.2vw,24px);
+                    line-height:1.85;
+                    color:#333;
+                    font-weight:600;
+                    margin-bottom:20px;
+                    font-family:'Playfair Display',serif;
+                    font-style:italic;
+                }
+                .cagnotte-text {
+                    font-size:clamp(16px,1.9vw,20px);
+                    line-height:1.85;
+                    color:#555;
+                    margin-bottom:38px;
+                    max-width:640px;
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+                .cagnotte-highlight {
+                    color:#FF69B4;
+                    font-weight:600;
+                }
+                .cagnotte-cta {
+                    background:linear-gradient(135deg,#FF69B4,#ff8dc7);
+                    border:none;
+                    border-radius:40px;
+                    color:#fff!important;
+                    -webkit-text-fill-color:#fff;
+                    display:inline-flex;
+                    align-items:center;
+                    gap:10px;
+                    font-size:clamp(17px,2vw,20px);
+                    font-weight:700;
+                    padding:20px 50px;
+                    text-decoration:none;
+                    letter-spacing:0.5px;
+                    box-shadow:0 12px 40px rgba(255,105,180,0.5);
+                    transition:transform 0.25s ease,box-shadow 0.25s ease;
+                }
+                .cagnotte-cta:hover {
+                    transform:translateY(-3px) scale(1.03);
+                    box-shadow:0 16px 46px rgba(255,105,180,0.6);
+                    color:#fff!important;
+                    text-decoration:none;
+                }
+                .cagnotte-cta-heart {
+                    font-size:22px;
+                }
+                .cagnotte-secure {
+                    margin-top:24px;
+                    color:#999;
+                    font-size:13px;
+                    letter-spacing:1px;
+                }
+
+                /* Bouton flottant — pilule avec texte permanent */
+                .cagnotte-float {
+                    position:fixed;
+                    right:20px;
+                    bottom:74px;
+                    z-index:12;
+                    box-sizing:border-box;
+                    height:44px;
+                    padding:0 20px;
+                    background:linear-gradient(135deg,#FF69B4,#ff8dc7);
+                    color:#fff!important;
+                    -webkit-text-fill-color:#fff;
+                    border-radius:50px;
+                    display:inline-flex;
+                    align-items:center;
+                    gap:8px;
+                    font-weight:800;
+                    font-size:13px;
+                    letter-spacing:1.2px;
+                    text-transform:uppercase;
+                    text-decoration:none!important;
+                    box-shadow:0 10px 30px rgba(255,105,180,0.5),0 4px 10px rgba(0,0,0,0.08);
+                    opacity:0;
+                    visibility:hidden;
+                    transform:translateY(20px) scale(0.9);
+                    transition:opacity 0.4s ease,transform 0.4s ease,box-shadow 0.25s ease,visibility 0.4s;
+                    animation:cagnotte-float-pulse 2.6s ease-in-out infinite;
+                }
+                .cagnotte-float.visible {
+                    opacity:1;
+                    visibility:visible;
+                    transform:translateY(0) scale(1);
+                }
+                .cagnotte-float:hover {
+                    box-shadow:0 14px 42px rgba(255,105,180,0.7),0 6px 14px rgba(0,0,0,0.12);
+                    transform:translateY(-3px) scale(1.04);
+                    color:#fff!important;
+                    text-decoration:none;
+                }
+                .cagnotte-float-icon {
+                    font-size:18px;
+                    line-height:1;
+                    display:inline-block;
+                    transform-origin:50% 90%;
+                    animation:cagnotte-float-icon 2.2s ease-in-out infinite;
+                }
+                @keyframes cagnotte-float-pulse {
+                    0%,100% { box-shadow:0 10px 30px rgba(255,105,180,0.5),0 4px 10px rgba(0,0,0,0.08); }
+                    50%      { box-shadow:0 10px 42px rgba(255,105,180,0.78),0 4px 14px rgba(0,0,0,0.14); }
+                }
+                @keyframes cagnotte-float-icon {
+                    0%,100%  { transform:rotate(0deg) scale(1); }
+                    15%       { transform:rotate(-12deg) scale(1.08); }
+                    30%       { transform:rotate(12deg) scale(1.08); }
+                    45%       { transform:rotate(-8deg) scale(1.05); }
+                    60%       { transform:rotate(8deg) scale(1.05); }
+                    75%       { transform:rotate(0deg) scale(1); }
+                }
+                @media (max-width:576px) {
+                    .cagnotte-float {
+                        padding:0 14px;
+                        font-size:10.5px;
+                        letter-spacing:0.8px;
+                        height:40px;
+                        bottom:70px;
+                    }
+                    .cagnotte-float-icon {
+                        font-size:16px;
+                    }
+                }
+            </style>
 
             <!-- RSVP Section Start-->
             <section class="section section-7">
@@ -948,6 +1042,19 @@
                 </div>
             </section>
 
+            <!-- Bouton flottant cagnotte -->
+            <a href="#registry" class="cagnotte-float" id="cagnotte-float" aria-label="Participer à notre bonheur">
+                <span class="cagnotte-float-icon">🎁</span>
+                <span class="cagnotte-float-txt">Participer à notre bonheur</span>
+            </a>
+            <script>
+            (function() {
+                var btn = document.getElementById('cagnotte-float');
+                // Bouton toujours visible avec une petite animation d'apparition au chargement
+                setTimeout(function() { btn.classList.add('visible'); }, 300);
+            })();
+            </script>
+
             <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
             <!-- Popup confirmation RSVP -->
@@ -1002,7 +1109,7 @@
         <!-- Fade-in au scroll -->
         <script>
         (function() {
-            var els = document.querySelectorAll('.section-header, .tl-item, .gal-item, .resto-photos, #registry .container > *, .form-group, footer > *');
+            var els = document.querySelectorAll('.section-header, .tl-item, .resto-photos, #registry .container > *, .form-group, footer > *');
             els.forEach(function(el) {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(28px)';
